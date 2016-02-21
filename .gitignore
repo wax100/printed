@@ -1,0 +1,19 @@
+# ignore some MODX files
+/setup
+core/cache/
+core/packages/*/
+
+#windows hotfix
+Gitify
+/src
+/vendor
+
+#ignore files after installing MODX
+ht.access
+manager/assets/ext3/adapter/jquery/ext-jquery-adapter-debug.js
+manager/assets/ext3/adapter/prototype/ext-prototype-adapter-debug.js
+manager/assets/ext3/adapter/yui/ext-yui-adapter-debug.js
+manager/templates/default/.gitignore
+
+# ignore Gitify backup
+/_backup/*

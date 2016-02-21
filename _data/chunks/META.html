@@ -1,0 +1,42 @@
+id: 30
+source: 3
+name: META
+description: ''
+category: base
+properties: 'a:0:{}'
+
+-----
+
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name = "format-detection" content = "telephone=no" />
+        
+        <base href="[[++site_url]]" />
+        <meta name="author" content="[[*createdby:userinfo=`username`]]">
+        <link rel="shortcut icon" href="favicon.ico">
+
+        <meta property="og:image" content="[[++site_url]][[*img:empty=`[[++assets_url]]images/logo.png`]]" />       
+        <meta property="og:url" content="[[~[[*id]]?&scheme=`full`]]" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="[[!++site_name]]" /> 
+
+        [[+meta_title:empty=`
+        <title>[[*longtitle:empty=`[[*pagetitle]]`]] </title>
+        <meta name="description" content="[[*longtitle:empty=`[[*pagetitle]]`]]">
+        <meta name="keywords" content="[[*description:htmlent]]">
+        <meta property="og:description" content="[[*introtext:htmlent:empty=`[[*pagetitle:htmlent]]`]]" />
+        <meta property="og:title" content="[[*longtitle:empty=`[[*pagetitle]] [[++site_name]]`]]" />
+        `]]
+        
+         <link rel="stylesheet" type="text/css" media="screen" href="assets/css/sweet-alert.css">
+        <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css">
+
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
+    </head>
+    <body>
+    

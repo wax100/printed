@@ -1,0 +1,4 @@
+key: mail_smtp_pass
+value: Cjan35Cvng
+xtype: text-password
+area: mail

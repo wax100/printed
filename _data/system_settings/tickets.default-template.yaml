@@ -1,0 +1,5 @@
+key: tickets.default_template
+value: '5'
+xtype: modx-combo-template
+namespace: tickets
+area: tickets.ticket

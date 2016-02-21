@@ -1,0 +1,4 @@
+key: ms2gallery_set_placeholders
+xtype: combo-boolean
+namespace: ms2gallery
+area: ms2gallery_frontend

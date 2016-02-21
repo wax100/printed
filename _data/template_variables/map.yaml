@@ -1,0 +1,13 @@
+id: 7
+source: 3
+type: ymaps
+name: map
+caption: 'Координаты на карте'
+category: Контакты
+elements: ''
+display: default
+default_text: ''
+properties: 'a:0:{}'
+input_properties: 'a:0:{}'
+output_properties: 'a:0:{}'
+content: ''
