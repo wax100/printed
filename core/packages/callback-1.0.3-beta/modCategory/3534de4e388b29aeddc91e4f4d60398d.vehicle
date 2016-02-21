@@ -1,0 +1,126 @@
+<?php return array (
+  'unique_key' => 'category',
+  'preserve_keys' => false,
+  'update_object' => true,
+  'related_objects' => 
+  array (
+    'Chunks' => 
+    array (
+      'd713291ec4d5c70967cb4737efb7b833' => 
+      array (
+        'preserve_keys' => false,
+        'update_object' => true,
+        'unique_key' => 'name',
+        'class' => 'modChunk',
+        'object' => '{"id":0,"source":1,"property_preprocess":0,"name":"callback","description":"","editor_type":0,"category":0,"cache_type":0,"snippet":"<div id=\\"modal-callback\\" class=\\"modal\\" >\\n\\t<div class=\\"clb_wrap \\">\\n    \\t<span class=\\"clb_close close\\" id=\\"clbh_exit\\"><\\/span>\\n    \\t<form class=\\"clb_form\\" method=\\"post\\" action=\\"[[~[[*id]]]]\\" id=\\"callback_form\\">\\n    \\t\\t<p class=\\"clb_title\\">\\u0412\\u0432\\u0435\\u0434\\u0438\\u0442\\u0435 \\u0441\\u0432\\u043e\\u0439 \\u043d\\u043e\\u043c\\u0435\\u0440 \\u0442\\u0435\\u043b\\u0435\\u0444\\u043e\\u043d\\u0430 \\u0438 \\u043c\\u0435\\u043d\\u0435\\u0434\\u0436\\u0435\\u0440 \\u043f\\u0435\\u0440\\u0435\\u0437\\u0432\\u043e\\u043d\\u0438\\u0442 \\u0432 \\u0442\\u0435\\u0447\\u0435\\u043d\\u0438\\u0435 30 \\u0441\\u0435\\u043a!<\\/p>\\n            <span class=\\"clb_arrow\\"><\\/span>\\n        \\t<input class=\\"clb_input\\" type=\\"text\\" name=\\"phone\\"  placeholder=\\"\\u0412\\u0432\\u0435\\u0434\\u0438\\u0442\\u0435 \\u0432\\u0430\\u0448 \\u0442\\u0435\\u043b\\u0435\\u0444\\u043e\\u043d\\" id=\\"callback_phone\\">\\n            <p class=\\"error clbh_banner-h1\\"><\\/p>\\n    \\t\\t<p class=\\"error\\">\\u041d\\u0435\\u043e\\u0431\\u0445\\u043e\\u0434\\u0438\\u043c\\u043e \\u0432\\u0432\\u0435\\u0441\\u0442\\u0438 \\u043d\\u043e\\u043c\\u0435\\u0440!<\\/p>\\n        \\t<input class=\\"clb_btn\\" type=\\"submit\\" name=\\"sendSms\\" value=\\"\\u041e\\u0442\\u043f\\u0440\\u0430\\u0432\\u0438\\u0442\\u044c\\">\\n            <div class=\\"clb_timer\\">\\n                <span id=\\"countdown\\">30<\\/span>.<span id=\\"countdown2\\">00<\\/span>\\n            <\\/div>\\n            <div class=\\"clearfix\\"><\\/div>\\n            <p class=\\"warning\\" style=\\"display:none;\\">\\u0412 \\u0434\\u0430\\u043d\\u043d\\u044b\\u0439 \\u043c\\u043e\\u043c\\u0435\\u043d\\u0442 \\u043d\\u0430\\u0431\\u043b\\u044e\\u0434\\u0430\\u044e\\u0442\\u0441\\u044f \\u0437\\u0430\\u0434\\u0435\\u0440\\u0436\\u043a\\u0438 \\u043e\\u043f\\u043e\\u0432\\u0435\\u0449\\u0435\\u043d\\u0438\\u044f.  <br>\\u0420\\u0435\\u043a\\u043e\\u043c\\u0435\\u043d\\u0434\\u0443\\u0435\\u043c \\u0432\\u043e\\u0441\\u043f\\u043e\\u043b\\u044c\\u0437\\u043e\\u0432\\u0430\\u0442\\u044c\\u0441\\u044f <a class=\\"clb_link\\" href=\\"#\\">\\u0444\\u043e\\u0440\\u043c\\u043e\\u0439 \\u043e\\u0431\\u0440\\u0430\\u0442\\u043d\\u043e\\u0439 \\u0441\\u0432\\u044f\\u0437\\u0438<\\/a>. <br> \\u041f\\u0440\\u0438\\u043d\\u043e\\u0441\\u0438\\u043c \\u0441\\u0432\\u043e\\u0438 \\u0438\\u0437\\u0432\\u0438\\u043d\\u0435\\u043d\\u0438\\u044f \\u0437\\u0430 \\u0432\\u0440\\u0435\\u043c\\u0435\\u043d\\u043d\\u044b\\u0435 \\u043d\\u0435\\u0443\\u0434\\u043e\\u0431\\u0441\\u0442\\u0432\\u0430.<\\/p>\\n    \\t<\\/form>\\n        <a href=\\"http:\\/\\/scrumweb.ru\\" class=\\"logo-scr\\"><\\/a>\\n    <\\/div>\\n<\\/div>\\n\\n<div id=\\"clbh_phone_div\\" class=\\"cbh-phone cbh-green cbh-static\\" style=\\"top: 569px; left: 955px;\\">\\n    <div class=\\"cbh-ph-circle\\"><\\/div>\\n    <div class=\\"cbh-ph-circle-fill\\"><\\/div>\\n    <div class=\\"cbh-ph-img-circle\\"><\\/div>\\n<\\/div>","locked":0,"properties":null,"static":0,"static_file":"core\\/components\\/callback\\/elements\\/chunks\\/chunk.callback.tpl","content":"<div id=\\"modal-callback\\" class=\\"modal\\" >\\n\\t<div class=\\"clb_wrap \\">\\n    \\t<span class=\\"clb_close close\\" id=\\"clbh_exit\\"><\\/span>\\n    \\t<form class=\\"clb_form\\" method=\\"post\\" action=\\"[[~[[*id]]]]\\" id=\\"callback_form\\">\\n    \\t\\t<p class=\\"clb_title\\">\\u0412\\u0432\\u0435\\u0434\\u0438\\u0442\\u0435 \\u0441\\u0432\\u043e\\u0439 \\u043d\\u043e\\u043c\\u0435\\u0440 \\u0442\\u0435\\u043b\\u0435\\u0444\\u043e\\u043d\\u0430 \\u0438 \\u043c\\u0435\\u043d\\u0435\\u0434\\u0436\\u0435\\u0440 \\u043f\\u0435\\u0440\\u0435\\u0437\\u0432\\u043e\\u043d\\u0438\\u0442 \\u0432 \\u0442\\u0435\\u0447\\u0435\\u043d\\u0438\\u0435 30 \\u0441\\u0435\\u043a!<\\/p>\\n            <span class=\\"clb_arrow\\"><\\/span>\\n        \\t<input class=\\"clb_input\\" type=\\"text\\" name=\\"phone\\"  placeholder=\\"\\u0412\\u0432\\u0435\\u0434\\u0438\\u0442\\u0435 \\u0432\\u0430\\u0448 \\u0442\\u0435\\u043b\\u0435\\u0444\\u043e\\u043d\\" id=\\"callback_phone\\">\\n            <p class=\\"error clbh_banner-h1\\"><\\/p>\\n    \\t\\t<p class=\\"error\\">\\u041d\\u0435\\u043e\\u0431\\u0445\\u043e\\u0434\\u0438\\u043c\\u043e \\u0432\\u0432\\u0435\\u0441\\u0442\\u0438 \\u043d\\u043e\\u043c\\u0435\\u0440!<\\/p>\\n        \\t<input class=\\"clb_btn\\" type=\\"submit\\" name=\\"sendSms\\" value=\\"\\u041e\\u0442\\u043f\\u0440\\u0430\\u0432\\u0438\\u0442\\u044c\\">\\n            <div class=\\"clb_timer\\">\\n                <span id=\\"countdown\\">30<\\/span>.<span id=\\"countdown2\\">00<\\/span>\\n            <\\/div>\\n            <div class=\\"clearfix\\"><\\/div>\\n            <p class=\\"warning\\" style=\\"display:none;\\">\\u0412 \\u0434\\u0430\\u043d\\u043d\\u044b\\u0439 \\u043c\\u043e\\u043c\\u0435\\u043d\\u0442 \\u043d\\u0430\\u0431\\u043b\\u044e\\u0434\\u0430\\u044e\\u0442\\u0441\\u044f \\u0437\\u0430\\u0434\\u0435\\u0440\\u0436\\u043a\\u0438 \\u043e\\u043f\\u043e\\u0432\\u0435\\u0449\\u0435\\u043d\\u0438\\u044f.  <br>\\u0420\\u0435\\u043a\\u043e\\u043c\\u0435\\u043d\\u0434\\u0443\\u0435\\u043c \\u0432\\u043e\\u0441\\u043f\\u043e\\u043b\\u044c\\u0437\\u043e\\u0432\\u0430\\u0442\\u044c\\u0441\\u044f <a class=\\"clb_link\\" href=\\"#\\">\\u0444\\u043e\\u0440\\u043c\\u043e\\u0439 \\u043e\\u0431\\u0440\\u0430\\u0442\\u043d\\u043e\\u0439 \\u0441\\u0432\\u044f\\u0437\\u0438<\\/a>. <br> \\u041f\\u0440\\u0438\\u043d\\u043e\\u0441\\u0438\\u043c \\u0441\\u0432\\u043e\\u0438 \\u0438\\u0437\\u0432\\u0438\\u043d\\u0435\\u043d\\u0438\\u044f \\u0437\\u0430 \\u0432\\u0440\\u0435\\u043c\\u0435\\u043d\\u043d\\u044b\\u0435 \\u043d\\u0435\\u0443\\u0434\\u043e\\u0431\\u0441\\u0442\\u0432\\u0430.<\\/p>\\n    \\t<\\/form>\\n        <a href=\\"http:\\/\\/scrumweb.ru\\" class=\\"logo-scr\\"><\\/a>\\n    <\\/div>\\n<\\/div>\\n\\n<div id=\\"clbh_phone_div\\" class=\\"cbh-phone cbh-green cbh-static\\" style=\\"top: 569px; left: 955px;\\">\\n    <div class=\\"cbh-ph-circle\\"><\\/div>\\n    <div class=\\"cbh-ph-circle-fill\\"><\\/div>\\n    <div class=\\"cbh-ph-img-circle\\"><\\/div>\\n<\\/div>"}',
+        'guid' => '6594472f82563fe9f1b6c3b22a770f4e',
+        'native_key' => 0,
+        'signature' => '1100d8c41d467b0a493fee7aa6dbb2c2',
+      ),
+      '7203ecded33705586b29f2df0c0e865a' => 
+      array (
+        'preserve_keys' => false,
+        'update_object' => true,
+        'unique_key' => 'name',
+        'class' => 'modChunk',
+        'object' => '{"id":0,"source":1,"property_preprocess":0,"name":"callback_sms","description":"","editor_type":0,"category":0,"cache_type":0,"snippet":"\\u041f\\u0435\\u0440\\u0435\\u0437\\u0432\\u043e\\u043d\\u0438\\u0442\\u0435 \\u043f\\u043e \\u043d\\u043e\\u043c\\u0435\\u0440\\u0443 [[+phone]]. [[++site_name]]","locked":0,"properties":null,"static":0,"static_file":"core\\/components\\/callback\\/elements\\/chunks\\/chunk.callback_sms.tpl","content":"\\u041f\\u0435\\u0440\\u0435\\u0437\\u0432\\u043e\\u043d\\u0438\\u0442\\u0435 \\u043f\\u043e \\u043d\\u043e\\u043c\\u0435\\u0440\\u0443 [[+phone]]. [[++site_name]]"}',
+        'guid' => 'dc08689b5e701bde62f3d83ba5de46cb',
+        'native_key' => 0,
+        'signature' => 'a8170727eea55eea5a1cdb02183e0841',
+      ),
+    ),
+    'Plugins' => 
+    array (
+      'ecbe720673e4fde6a0e842974ceaa857' => 
+      array (
+        'preserve_keys' => false,
+        'update_object' => true,
+        'unique_key' => 'name',
+        'class' => 'modPlugin',
+        'object' => '{"id":null,"source":1,"property_preprocess":0,"name":"callback","description":"Add CSS and JS","editor_type":0,"category":0,"cache_type":0,"plugincode":"$corePath = $modx->getOption(\'callback.core_path\', null, $modx->getOption(\'core_path\') . \'components\\/callback\\/\');\\n    $modx->lexicon->load(\'callback:default\');\\n    switch ($modx->event->name) {\\n       case \'OnLoadWebDocument\':{\\n            $modx->regClientCSS(\'assets\\/components\\/callback\\/css\\/callback.css\');\\n            $modx->regClientScript(\'assets\\/components\\/callback\\/js\\/jquery.maskedinput.js\');\\n            $modx->regClientScript(\'assets\\/components\\/callback\\/js\\/jquery.countDown.js\');\\n            $modx->regClientScript(\'assets\\/components\\/callback\\/js\\/callback.js\');\\n            }\\n    }\\n    return \'$_lang\';","locked":0,"properties":null,"disabled":0,"moduleguid":"","static":0,"static_file":"core\\/components\\/callback\\/elements\\/plugins\\/plugin.callback.php","content":"$corePath = $modx->getOption(\'callback.core_path\', null, $modx->getOption(\'core_path\') . \'components\\/callback\\/\');\\n    $modx->lexicon->load(\'callback:default\');\\n    switch ($modx->event->name) {\\n       case \'OnLoadWebDocument\':{\\n            $modx->regClientCSS(\'assets\\/components\\/callback\\/css\\/callback.css\');\\n            $modx->regClientScript(\'assets\\/components\\/callback\\/js\\/jquery.maskedinput.js\');\\n            $modx->regClientScript(\'assets\\/components\\/callback\\/js\\/jquery.countDown.js\');\\n            $modx->regClientScript(\'assets\\/components\\/callback\\/js\\/callback.js\');\\n            }\\n    }\\n    return \'$_lang\';"}',
+        'guid' => '8b7aba9b67153d34a61e066c895ac96a',
+        'native_key' => NULL,
+        'signature' => '92700e0f1706999413fc18ee0be07b6a',
+        'related_objects' => 
+        array (
+          'PluginEvents' => 
+          array (
+            '856d85ca50c56a54a1bf01cd83897677' => 
+            array (
+              'preserve_keys' => true,
+              'update_object' => true,
+              'unique_key' => 
+              array (
+                0 => 'pluginid',
+                1 => 'event',
+              ),
+              'class' => 'modPluginEvent',
+              'object' => '{"pluginid":0,"event":"OnLoadWebDocument","priority":0,"propertyset":0}',
+              'guid' => '4becf1818e7d5f4c6596f278baffef40',
+              'native_key' => 
+              array (
+                0 => 0,
+                1 => 'OnLoadWebDocument',
+              ),
+              'signature' => 'acf13d678f7da5f2132e3ac940b65a04',
+            ),
+          ),
+        ),
+      ),
+    ),
+  ),
+  'related_object_attributes' => 
+  array (
+    'Snippets' => 
+    array (
+      'preserve_keys' => false,
+      'update_object' => true,
+      'unique_key' => 'name',
+    ),
+    'Chunks' => 
+    array (
+      'preserve_keys' => false,
+      'update_object' => true,
+      'unique_key' => 'name',
+    ),
+    'Plugins' => 
+    array (
+      'preserve_keys' => false,
+      'update_object' => true,
+      'unique_key' => 'name',
+    ),
+    'PluginEvents' => 
+    array (
+      'preserve_keys' => true,
+      'update_object' => true,
+      'unique_key' => 
+      array (
+        0 => 'pluginid',
+        1 => 'event',
+      ),
+    ),
+  ),
+  'namespace' => 'callback',
+  'resolve' => 
+  array (
+    0 => 
+    array (
+      'type' => 'file',
+      'body' => '{"source":"callback-1.0.3-beta\\/modCategory\\/3534de4e388b29aeddc91e4f4d60398d\\/0\\/","target":"return MODX_ASSETS_PATH . \'components\\/\';","name":"callback"}',
+    ),
+    1 => 
+    array (
+      'type' => 'file',
+      'body' => '{"source":"callback-1.0.3-beta\\/modCategory\\/3534de4e388b29aeddc91e4f4d60398d\\/1\\/","target":"return MODX_CORE_PATH . \'components\\/\';","name":"callback"}',
+    ),
+  ),
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => 'c00b9d253710bbe7eaf91bd97a56bdaa',
+  'package' => 'modx',
+  'class' => 'modCategory',
+  'signature' => '3534de4e388b29aeddc91e4f4d60398d',
+  'native_key' => NULL,
+  'object' => '{"id":null,"parent":0,"category":"callback"}',
+);

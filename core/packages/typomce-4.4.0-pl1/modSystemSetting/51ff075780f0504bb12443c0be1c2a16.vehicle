@@ -1,0 +1,16 @@
+<?php return array (
+  'unique_key' => 'key',
+  'preserve_keys' => true,
+  'update_object' => false,
+  'namespace' => 'typomce',
+  'resolve' => NULL,
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => '664018b06e8b651e6674a50d817d9d23',
+  'package' => 'modx',
+  'class' => 'modSystemSetting',
+  'signature' => '51ff075780f0504bb12443c0be1c2a16',
+  'native_key' => 'typo.path_options',
+  'object' => '{"key":"typo.path_options","value":"","xtype":"textfield","namespace":"typomce","area":"general","editedon":null}',
+);

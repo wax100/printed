@@ -1,0 +1,16 @@
+<?php return array (
+  'unique_key' => 'key',
+  'preserve_keys' => true,
+  'update_object' => false,
+  'namespace' => 'typomce',
+  'resolve' => NULL,
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => '5eb9255be1b8ab0e5cd630f28aa9fabd',
+  'package' => 'modx',
+  'class' => 'modSystemSetting',
+  'signature' => '68335782efa78fd75e7df99aa663721c',
+  'native_key' => 'typo.remove_redundant_brs',
+  'object' => '{"key":"typo.remove_redundant_brs","value":true,"xtype":"combo-boolean","namespace":"typomce","area":"cleanup-output","editedon":null}',
+);

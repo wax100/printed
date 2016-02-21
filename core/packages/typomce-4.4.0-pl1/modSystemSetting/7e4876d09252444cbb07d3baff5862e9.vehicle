@@ -1,0 +1,16 @@
+<?php return array (
+  'unique_key' => 'key',
+  'preserve_keys' => true,
+  'update_object' => false,
+  'namespace' => 'typomce',
+  'resolve' => NULL,
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => 'ee0e907b27e09227ad3b1433f2521bc1',
+  'package' => 'modx',
+  'class' => 'modSystemSetting',
+  'signature' => '7e4876d09252444cbb07d3baff5862e9',
+  'native_key' => 'typo.skin',
+  'object' => '{"key":"typo.skin","value":"cirkuit","xtype":"textfield","namespace":"typomce","area":"general","editedon":null}',
+);

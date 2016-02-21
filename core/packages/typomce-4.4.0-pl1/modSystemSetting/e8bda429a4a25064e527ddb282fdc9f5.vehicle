@@ -1,0 +1,16 @@
+<?php return array (
+  'unique_key' => 'key',
+  'preserve_keys' => true,
+  'update_object' => false,
+  'namespace' => 'typomce',
+  'resolve' => NULL,
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => '1076077144c6c5f3581ef78762b8881a',
+  'package' => 'modx',
+  'class' => 'modSystemSetting',
+  'signature' => 'e8bda429a4a25064e527ddb282fdc9f5',
+  'native_key' => 'typo.table_inline_editing',
+  'object' => '{"key":"typo.table_inline_editing","value":false,"xtype":"combo-boolean","namespace":"typomce","area":"general","editedon":null}',
+);

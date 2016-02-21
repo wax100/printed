@@ -1,0 +1,16 @@
+<?php return array (
+  'unique_key' => 'key',
+  'preserve_keys' => true,
+  'update_object' => false,
+  'namespace' => 'typomce',
+  'resolve' => NULL,
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => '4153854a10e309c0f917b78b05c60201',
+  'package' => 'modx',
+  'class' => 'modSystemSetting',
+  'signature' => 'c6a2e7e8d92deba15aaeeb7590288d12',
+  'native_key' => 'typo.convert_newlines_to_brs',
+  'object' => '{"key":"typo.convert_newlines_to_brs","value":false,"xtype":"combo-boolean","namespace":"typomce","area":"cleanup-output","editedon":null}',
+);

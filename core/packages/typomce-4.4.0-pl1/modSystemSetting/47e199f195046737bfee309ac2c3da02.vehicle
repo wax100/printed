@@ -1,0 +1,16 @@
+<?php return array (
+  'unique_key' => 'key',
+  'preserve_keys' => true,
+  'update_object' => false,
+  'namespace' => 'typomce',
+  'resolve' => NULL,
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => '66f97375a85d00a2b74e4eda073d54e9',
+  'package' => 'modx',
+  'class' => 'modSystemSetting',
+  'signature' => '47e199f195046737bfee309ac2c3da02',
+  'native_key' => 'typo.font_size_style_values',
+  'object' => '{"key":"typo.font_size_style_values","value":"xx-small,x-small,small,medium,large,x-large,xx-large","xtype":"textfield","namespace":"typomce","area":"cleanup-output","editedon":null}',
+);

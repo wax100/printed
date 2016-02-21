@@ -1,0 +1,16 @@
+<?php return array (
+  'unique_key' => 'key',
+  'preserve_keys' => true,
+  'update_object' => false,
+  'namespace' => 'typomce',
+  'resolve' => NULL,
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => '62a8b526515f3cf6d9e006eec022cf5c',
+  'package' => 'modx',
+  'class' => 'modSystemSetting',
+  'signature' => 'aae8a4980ae6ec8e54c9944c5c62423d',
+  'native_key' => 'typo.nowrap',
+  'object' => '{"key":"typo.nowrap","value":false,"xtype":"combo-boolean","namespace":"typomce","area":"cleanup-output","editedon":null}',
+);

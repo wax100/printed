@@ -1,0 +1,140 @@
+<?php return array (
+  'unique_key' => 'category',
+  'preserve_keys' => false,
+  'update_object' => true,
+  'related_objects' => 
+  array (
+    'Plugins' => 
+    array (
+      'b11fdf2d91889dbaf349be706d705b3e' => 
+      array (
+        'preserve_keys' => false,
+        'update_object' => true,
+        'unique_key' => 'name',
+        'class' => 'modPlugin',
+        'object' => '{"id":null,"source":1,"property_preprocess":0,"name":"ymaps","description":"Generate yMaps TV input","editor_type":0,"category":0,"cache_type":0,"plugincode":"$corePath = $modx->getOption(\'ymaps.core_path\', null, $modx->getOption(\'core_path\') . \'components\\/ymaps\\/\');\\n    $modx->lexicon->load(\'ymaps:default\');\\n    switch ($modx->event->name) {\\n        case \'OnTVInputRenderList\':\\n        $modx->event->output($corePath . \'elements\\/tv\\/input\\/\');\\n        break;\\n        case \'OnTVInputPropertiesList\':\\n        $modx->event->output($corePath . \'elements\\/tv\\/inputoptions\\/\');\\n        break;\\n        case \'OnDocFormPrerender\':\\n        $modx->regClientStartupScript(\'http:\\/\\/api-maps.yandex.ru\\/2.0\\/?load=package.full&lang=ru-RU\');\\n        $modx->regClientStartupScript(\'http:\\/\\/code.jquery.com\\/jquery-latest.js\');\\n        break;\\n    }\\n    return \'$_lang\';","locked":0,"properties":null,"disabled":0,"moduleguid":"","static":0,"static_file":"core\\/components\\/ymaps\\/elements\\/plugins\\/plugin.ymaps.php","content":"$corePath = $modx->getOption(\'ymaps.core_path\', null, $modx->getOption(\'core_path\') . \'components\\/ymaps\\/\');\\n    $modx->lexicon->load(\'ymaps:default\');\\n    switch ($modx->event->name) {\\n        case \'OnTVInputRenderList\':\\n        $modx->event->output($corePath . \'elements\\/tv\\/input\\/\');\\n        break;\\n        case \'OnTVInputPropertiesList\':\\n        $modx->event->output($corePath . \'elements\\/tv\\/inputoptions\\/\');\\n        break;\\n        case \'OnDocFormPrerender\':\\n        $modx->regClientStartupScript(\'http:\\/\\/api-maps.yandex.ru\\/2.0\\/?load=package.full&lang=ru-RU\');\\n        $modx->regClientStartupScript(\'http:\\/\\/code.jquery.com\\/jquery-latest.js\');\\n        break;\\n    }\\n    return \'$_lang\';"}',
+        'guid' => '5e5cd1f884d3eba56b945eb72a70ed70',
+        'native_key' => NULL,
+        'signature' => '2a573dec2c27315a9df2b80ca7e9637b',
+        'related_objects' => 
+        array (
+          'PluginEvents' => 
+          array (
+            '34896a1bd47c05ced0025a8073c5ad00' => 
+            array (
+              'preserve_keys' => true,
+              'update_object' => true,
+              'unique_key' => 
+              array (
+                0 => 'pluginid',
+                1 => 'event',
+              ),
+              'class' => 'modPluginEvent',
+              'object' => '{"pluginid":0,"event":"OnTVInputRenderList","priority":0,"propertyset":0}',
+              'guid' => 'f084d5c47176e2388b1a2c6f262bf8fd',
+              'native_key' => 
+              array (
+                0 => 0,
+                1 => 'OnTVInputRenderList',
+              ),
+              'signature' => 'ee73b4dd4bf53cb0a75b721c997c42d9',
+            ),
+            '04e0dffb61c5fc9c8024bbee9928fa07' => 
+            array (
+              'preserve_keys' => true,
+              'update_object' => true,
+              'unique_key' => 
+              array (
+                0 => 'pluginid',
+                1 => 'event',
+              ),
+              'class' => 'modPluginEvent',
+              'object' => '{"pluginid":0,"event":"OnTVInputPropertiesList","priority":0,"propertyset":0}',
+              'guid' => 'd68efcf4135d64e537d02392db3ea07a',
+              'native_key' => 
+              array (
+                0 => 0,
+                1 => 'OnTVInputPropertiesList',
+              ),
+              'signature' => '4fa5711707484e2d02df032b41cc8271',
+            ),
+            'ba40a8e326c186550c795aa9a477cb20' => 
+            array (
+              'preserve_keys' => true,
+              'update_object' => true,
+              'unique_key' => 
+              array (
+                0 => 'pluginid',
+                1 => 'event',
+              ),
+              'class' => 'modPluginEvent',
+              'object' => '{"pluginid":0,"event":"OnDocFormPrerender","priority":0,"propertyset":0}',
+              'guid' => '5e83bc146db4d8a832662fef7fde68d7',
+              'native_key' => 
+              array (
+                0 => 0,
+                1 => 'OnDocFormPrerender',
+              ),
+              'signature' => '750786b770c676354360a78f901f1568',
+            ),
+          ),
+        ),
+      ),
+    ),
+  ),
+  'related_object_attributes' => 
+  array (
+    'Snippets' => 
+    array (
+      'preserve_keys' => false,
+      'update_object' => false,
+      'unique_key' => 'name',
+    ),
+    'Chunks' => 
+    array (
+      'preserve_keys' => false,
+      'update_object' => false,
+      'unique_key' => 'name',
+    ),
+    'Plugins' => 
+    array (
+      'preserve_keys' => false,
+      'update_object' => true,
+      'unique_key' => 'name',
+    ),
+    'PluginEvents' => 
+    array (
+      'preserve_keys' => true,
+      'update_object' => true,
+      'unique_key' => 
+      array (
+        0 => 'pluginid',
+        1 => 'event',
+      ),
+    ),
+  ),
+  'namespace' => 'ymaps',
+  'resolve' => 
+  array (
+    0 => NULL,
+    1 => 
+    array (
+      'type' => 'file',
+      'body' => '{"source":"ymaps-1.0.0-beta\\/modCategory\\/0189436d5aa0fc582eb1c030733289f8\\/1\\/","target":"return MODX_CORE_PATH . \'components\\/\';","name":"ymaps"}',
+    ),
+    2 => 
+    array (
+      'type' => 'php',
+      'body' => '{"source":"ymaps-1.0.0-beta\\/modCategory\\/0189436d5aa0fc582eb1c030733289f8.resolve.plugins.resolver","type":"php","name":"resolve.plugins"}',
+    ),
+  ),
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => '14c06c2326affc9a974ee65cca7f4cf5',
+  'package' => 'modx',
+  'class' => 'modCategory',
+  'signature' => '0189436d5aa0fc582eb1c030733289f8',
+  'native_key' => NULL,
+  'object' => '{"id":null,"parent":0,"category":"ymaps"}',
+);

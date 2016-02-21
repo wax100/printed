@@ -1,0 +1,16 @@
+<?php return array (
+  'unique_key' => 'key',
+  'preserve_keys' => true,
+  'update_object' => false,
+  'namespace' => 'typomce',
+  'resolve' => NULL,
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => '7beb952736104422ccca08134afefaa2',
+  'package' => 'modx',
+  'class' => 'modSystemSetting',
+  'signature' => '471d9637ffd995f889337e3a79246d7c',
+  'native_key' => 'typo.skin_variant',
+  'object' => '{"key":"typo.skin_variant","value":"","xtype":"textfield","namespace":"typomce","area":"general","editedon":null}',
+);

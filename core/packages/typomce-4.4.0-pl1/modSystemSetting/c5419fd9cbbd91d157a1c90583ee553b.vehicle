@@ -1,0 +1,16 @@
+<?php return array (
+  'unique_key' => 'key',
+  'preserve_keys' => true,
+  'update_object' => false,
+  'namespace' => 'typomce',
+  'resolve' => NULL,
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => 'dc9ea35f05b7d86aefa9b7fa5d6e0c2e',
+  'package' => 'modx',
+  'class' => 'modSystemSetting',
+  'signature' => 'c5419fd9cbbd91d157a1c90583ee553b',
+  'native_key' => 'typo.fix_table_elements',
+  'object' => '{"key":"typo.fix_table_elements","value":false,"xtype":"combo-boolean","namespace":"typomce","area":"cleanup-output","editedon":null}',
+);

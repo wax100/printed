@@ -1,0 +1,16 @@
+<?php return array (
+  'unique_key' => 'key',
+  'preserve_keys' => true,
+  'update_object' => true,
+  'namespace' => 'callback',
+  'resolve' => NULL,
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => '5693787ec0ef1fd51199db649ab82dba',
+  'package' => 'modx',
+  'class' => 'modSystemSetting',
+  'signature' => 'bfe13be81823561bec417d5ff3a90ab1',
+  'native_key' => 'callback.phone',
+  'object' => '{"key":"callback.phone","value":"","xtype":"textfield","namespace":"callback","area":"callback","editedon":null}',
+);

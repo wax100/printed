@@ -1,0 +1,104 @@
+<?php return array (
+  'unique_key' => 'name',
+  'preserve_keys' => false,
+  'update_object' => true,
+  'related_objects' => 
+  array (
+    'PluginEvents' => 
+    array (
+      '6749e8a463588905d6cea645f8a53a1b' => 
+      array (
+        'preserve_keys' => true,
+        'update_object' => false,
+        'unique_key' => 
+        array (
+          0 => 'pluginid',
+          1 => 'event',
+        ),
+        'class' => 'modPluginEvent',
+        'object' => '{"pluginid":0,"event":"OnPageNotFound","priority":0,"propertyset":0}',
+        'guid' => '6ea07ceb2035b4ecc8826c19af1ddd14',
+        'native_key' => 
+        array (
+          0 => 0,
+          1 => 'OnPageNotFound',
+        ),
+        'signature' => '3332d6716319d29aee5598c3c1c8495e',
+      ),
+      'e35247dbec9822c8bad62f077096d194' => 
+      array (
+        'preserve_keys' => true,
+        'update_object' => false,
+        'unique_key' => 
+        array (
+          0 => 'pluginid',
+          1 => 'event',
+        ),
+        'class' => 'modPluginEvent',
+        'object' => '{"pluginid":0,"event":"OnDocFormRender","priority":0,"propertyset":0}',
+        'guid' => '2c7678685adc7f95f19083e61fd28c7a',
+        'native_key' => 
+        array (
+          0 => 0,
+          1 => 'OnDocFormRender',
+        ),
+        'signature' => 'c756cd7ce92b28a9f8168edb81488185',
+      ),
+      'dcc8bfd8a38a8004bc9fefa436983385' => 
+      array (
+        'preserve_keys' => true,
+        'update_object' => false,
+        'unique_key' => 
+        array (
+          0 => 'pluginid',
+          1 => 'event',
+        ),
+        'class' => 'modPluginEvent',
+        'object' => '{"pluginid":0,"event":"OnDocFormSave","priority":0,"propertyset":0}',
+        'guid' => 'b20c707ec5aa84d0e23795b112fa9b4d',
+        'native_key' => 
+        array (
+          0 => 0,
+          1 => 'OnDocFormSave',
+        ),
+        'signature' => '6fdf4c939f0ba216c66dc59ab94c8d49',
+      ),
+    ),
+  ),
+  'related_object_attributes' => 
+  array (
+    'PluginEvents' => 
+    array (
+      'preserve_keys' => true,
+      'update_object' => false,
+      'unique_key' => 
+      array (
+        0 => 'pluginid',
+        1 => 'event',
+      ),
+    ),
+  ),
+  'namespace' => 'redirector',
+  'resolve' => 
+  array (
+    0 => 
+    array (
+      'type' => 'file',
+      'body' => '{"source":"redirector-2.0.5-pl\\/modPlugin\\/b96bf16e94004399797d0d7d5faf7747\\/0\\/","target":"return MODX_ASSETS_PATH . \'components\\/\';","name":"redirector"}',
+    ),
+    1 => 
+    array (
+      'type' => 'file',
+      'body' => '{"source":"redirector-2.0.5-pl\\/modPlugin\\/b96bf16e94004399797d0d7d5faf7747\\/1\\/","target":"return MODX_CORE_PATH . \'components\\/\';","name":"redirector"}',
+    ),
+  ),
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => 'fb3c44027a0994f02890e80b684896f4',
+  'package' => 'modx',
+  'class' => 'modPlugin',
+  'signature' => 'b96bf16e94004399797d0d7d5faf7747',
+  'native_key' => 1,
+  'object' => '{"id":1,"source":0,"property_preprocess":0,"name":"Redirector","description":"Handles site redirects.","editor_type":0,"category":0,"cache_type":0,"plugincode":"\\/**\\n * @package redirector\\n *\\/\\n\\/* load redirector class *\\/\\n$corePath =  $modx->getOption(\'redirector.core_path\',$scriptProperties,$modx->getOption(\'core_path\').\'components\\/redirector\\/\');\\n$redirector = $modx->getService(\'redirector\',\'Redirector\',$corePath.\'model\\/redirector\\/\',$scriptProperties);\\nif (!($redirector instanceof Redirector)) return \'\';\\n\\n$eventName = $modx->event->name;\\nswitch($eventName) {\\n    case \'OnPageNotFound\':\\n\\n        \\/* handle redirects *\\/\\n        $search = $_SERVER[\'REQUEST_URI\'];\\n        $baseUrl = $modx->getOption(\'base_url\',null,MODX_BASE_URL);\\n        if(!empty($baseUrl) && $baseUrl != \'\\/\' && $baseUrl != \' \' && $baseUrl != \'\\/\'.$modx->context->get(\'key\').\'\\/\') {\\n            $search = str_replace($baseUrl,\'\',$search);\\n        }\\n\\n        $search = ltrim($search,\'\\/\');\\n        if(!empty($search)) {\\n\\n            \\/** @var modRedirect $redirect *\\/\\n            $redirect = $modx->getObject(\'modRedirect\', array(\\n                \\"(`modRedirect`.`pattern` = \'\\".$search.\\"\')\\",\\n                \\"(`modRedirect`.`context_key` = \'\\".$modx->context->get(\'key\').\\"\' OR `modRedirect`.`context_key` IS NULL OR `modRedirect`.`context_key` = \'\')\\",\\n                \'active\' => true,\\n            ));\\n\\n            \\/\\/ when not found, check a REGEX record..\\n            \\/\\/ need to separate this one because of some \'alias.html > target.html\' vs. \'best-alias.html > best-target.html\' issues...\\n            if(empty($redirect) || !is_object($redirect)) {\\n                $redirect = $modx->getObject(\'modRedirect\', array(\\n                    \\"(\'\\".$search.\\"\' REGEXP `modRedirect`.`pattern` OR \'\\".$search.\\"\' REGEXP CONCAT(\'^\', `modRedirect`.`pattern`, \'$\'))\\",\\n                    \\"(`modRedirect`.`context_key` = \'\\".$modx->context->get(\'key\').\\"\' OR `modRedirect`.`context_key` IS NULL OR `modRedirect`.`context_key` = \'\')\\",\\n                    \'active\' => true,\\n                ));\\n            }\\n\\n            if(!empty($redirect) && is_object($redirect)) {\\n\\n                $target = $redirect->get(\'target\');\\n                $modx->parser->processElementTags(\'\', $target, true, true);\\n\\n                if ($target != $modx->resourceIdentifier && $target != $search) {\\n                    if (strpos($target, \'$\') !== false) {\\n                        $pattern = $redirect->get(\'pattern\');\\n                        $target = preg_replace(\'\\/\'.$pattern.\'\\/\', $target, $search);\\n                    }\\n                    if (!strpos($target, \':\\/\\/\')) {\\n                        $target = $modx->getOption(\'site_url\').$target;\\n                    }\\n                    $modx->log(modX::LOG_LEVEL_INFO, \'Redirector plugin redirecting request for \' . $search . \' to \' . $target);\\n\\n                    $redirect->registerTrigger();\\n\\n                    $options = array(\'responseCode\' => \'HTTP\\/1.1 301 Moved Permanently\');\\n                    $modx->sendRedirect($target, $options);\\n                }\\n            }\\n        }\\n\\n    break;\\n\\n    case \'OnDocFormRender\':\\n        \\n        $track_uri_updates = $modx->getOption(\'redirector.track_uri_updates\', null, true);\\n        if ($mode == \'upd\' && $track_uri_updates) {\\n            $_SESSION[\'modx_resource_uri\'] = $resource->get(\'uri\');\\n        }\\n        \\n    break;\\n\\n    case \'OnDocFormSave\':\\n        \\n        \\/* if uri has changed, add to redirects *\\/\\n        $track_uri_updates = $modx->getOption(\'redirector.track_uri_updates\', null, true);\\n        $context_key = $resource->get(\'context_key\');\\n        $new_uri = $resource->get(\'uri\');\\n        \\n        if ($mode == \'upd\' && $track_uri_updates) {\\n            $old_uri = $_SESSION[\'modx_resource_uri\'];\\n            if ($old_uri != $new_uri) {\\n                \\n                \\/* uri changed *\\/\\n                $redirect = $modx->getObject(\'modRedirect\', array(\'pattern\' => $old_uri, \'context_key\' => $context_key, \'active\' => true));\\n                if (empty($redirect)) {\\n                    \\n                    \\/* no record for old uri *\\/\\n                    $new_redirect = $modx->newObject(\'modRedirect\');\\n                    $new_redirect->fromArray(array(\\n                        \'pattern\' => $old_uri,\\n                        \'target\' => $new_uri,\\n                        \'context_key\' => $context_key,\\n                        \'active\' => true,\\n                    ));\\n                    \\n                    if ($new_redirect->save() == false) {\\n                        return $modx->error->failure($modx->lexicon(\'redirector.redirect_err_save\'));\\n                    }\\n                }\\n            }\\n            \\n            $_SESSION[\'modx_resource_uri\'] = $new_uri;\\n        }\\n        \\n    break;\\n}\\n\\nreturn \'\';","locked":0,"properties":null,"disabled":0,"moduleguid":"","static":0,"static_file":"","content":"\\/**\\n * @package redirector\\n *\\/\\n\\/* load redirector class *\\/\\n$corePath =  $modx->getOption(\'redirector.core_path\',$scriptProperties,$modx->getOption(\'core_path\').\'components\\/redirector\\/\');\\n$redirector = $modx->getService(\'redirector\',\'Redirector\',$corePath.\'model\\/redirector\\/\',$scriptProperties);\\nif (!($redirector instanceof Redirector)) return \'\';\\n\\n$eventName = $modx->event->name;\\nswitch($eventName) {\\n    case \'OnPageNotFound\':\\n\\n        \\/* handle redirects *\\/\\n        $search = $_SERVER[\'REQUEST_URI\'];\\n        $baseUrl = $modx->getOption(\'base_url\',null,MODX_BASE_URL);\\n        if(!empty($baseUrl) && $baseUrl != \'\\/\' && $baseUrl != \' \' && $baseUrl != \'\\/\'.$modx->context->get(\'key\').\'\\/\') {\\n            $search = str_replace($baseUrl,\'\',$search);\\n        }\\n\\n        $search = ltrim($search,\'\\/\');\\n        if(!empty($search)) {\\n\\n            \\/** @var modRedirect $redirect *\\/\\n            $redirect = $modx->getObject(\'modRedirect\', array(\\n                \\"(`modRedirect`.`pattern` = \'\\".$search.\\"\')\\",\\n                \\"(`modRedirect`.`context_key` = \'\\".$modx->context->get(\'key\').\\"\' OR `modRedirect`.`context_key` IS NULL OR `modRedirect`.`context_key` = \'\')\\",\\n                \'active\' => true,\\n            ));\\n\\n            \\/\\/ when not found, check a REGEX record..\\n            \\/\\/ need to separate this one because of some \'alias.html > target.html\' vs. \'best-alias.html > best-target.html\' issues...\\n            if(empty($redirect) || !is_object($redirect)) {\\n                $redirect = $modx->getObject(\'modRedirect\', array(\\n                    \\"(\'\\".$search.\\"\' REGEXP `modRedirect`.`pattern` OR \'\\".$search.\\"\' REGEXP CONCAT(\'^\', `modRedirect`.`pattern`, \'$\'))\\",\\n                    \\"(`modRedirect`.`context_key` = \'\\".$modx->context->get(\'key\').\\"\' OR `modRedirect`.`context_key` IS NULL OR `modRedirect`.`context_key` = \'\')\\",\\n                    \'active\' => true,\\n                ));\\n            }\\n\\n            if(!empty($redirect) && is_object($redirect)) {\\n\\n                $target = $redirect->get(\'target\');\\n                $modx->parser->processElementTags(\'\', $target, true, true);\\n\\n                if ($target != $modx->resourceIdentifier && $target != $search) {\\n                    if (strpos($target, \'$\') !== false) {\\n                        $pattern = $redirect->get(\'pattern\');\\n                        $target = preg_replace(\'\\/\'.$pattern.\'\\/\', $target, $search);\\n                    }\\n                    if (!strpos($target, \':\\/\\/\')) {\\n                        $target = $modx->getOption(\'site_url\').$target;\\n                    }\\n                    $modx->log(modX::LOG_LEVEL_INFO, \'Redirector plugin redirecting request for \' . $search . \' to \' . $target);\\n\\n                    $redirect->registerTrigger();\\n\\n                    $options = array(\'responseCode\' => \'HTTP\\/1.1 301 Moved Permanently\');\\n                    $modx->sendRedirect($target, $options);\\n                }\\n            }\\n        }\\n\\n    break;\\n\\n    case \'OnDocFormRender\':\\n        \\n        $track_uri_updates = $modx->getOption(\'redirector.track_uri_updates\', null, true);\\n        if ($mode == \'upd\' && $track_uri_updates) {\\n            $_SESSION[\'modx_resource_uri\'] = $resource->get(\'uri\');\\n        }\\n        \\n    break;\\n\\n    case \'OnDocFormSave\':\\n        \\n        \\/* if uri has changed, add to redirects *\\/\\n        $track_uri_updates = $modx->getOption(\'redirector.track_uri_updates\', null, true);\\n        $context_key = $resource->get(\'context_key\');\\n        $new_uri = $resource->get(\'uri\');\\n        \\n        if ($mode == \'upd\' && $track_uri_updates) {\\n            $old_uri = $_SESSION[\'modx_resource_uri\'];\\n            if ($old_uri != $new_uri) {\\n                \\n                \\/* uri changed *\\/\\n                $redirect = $modx->getObject(\'modRedirect\', array(\'pattern\' => $old_uri, \'context_key\' => $context_key, \'active\' => true));\\n                if (empty($redirect)) {\\n                    \\n                    \\/* no record for old uri *\\/\\n                    $new_redirect = $modx->newObject(\'modRedirect\');\\n                    $new_redirect->fromArray(array(\\n                        \'pattern\' => $old_uri,\\n                        \'target\' => $new_uri,\\n                        \'context_key\' => $context_key,\\n                        \'active\' => true,\\n                    ));\\n                    \\n                    if ($new_redirect->save() == false) {\\n                        return $modx->error->failure($modx->lexicon(\'redirector.redirect_err_save\'));\\n                    }\\n                }\\n            }\\n            \\n            $_SESSION[\'modx_resource_uri\'] = $new_uri;\\n        }\\n        \\n    break;\\n}\\n\\nreturn \'\';"}',
+);

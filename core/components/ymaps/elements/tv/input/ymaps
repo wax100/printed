@@ -1,0 +1,85 @@
+<input id="tv{$tv->id}" name="tv{$tv->id}" class="textfield" value="{$tv->get('value')|escape}" readonly type = "text" style="width: 300px;float: left;margin-right: 30px;margin-bottom: 20px;"/> 
+
+<p><span style="color:red; size:14px; font-weight:bold" id="help"></span></p>
+
+<div>
+    <input id="address" type="textbox" value="Москва">
+    <input type="button" value="  НАЙТИ  " onclick="showAddress()">
+</div>
+<div id="map" style="width: 600px; height: 300px;"></div>
+<script type="text/javascript">
+    var id = "tv{$tv->id}";
+    var str = document.getElementById(id).value;
+    var num=0;
+    var map, placemark, geoResult;
+    
+    {literal}
+    
+    YMaps.jQuery(function () {
+        map = new YMaps.Map(YMaps.jQuery("#map")[0]);
+        map.addControl(new YMaps.Zoom());
+        var latlngparts = str.split(",");
+        map.setCenter(new YMaps.GeoPoint(parseFloat(latlngparts[0]),parseFloat(latlngparts[1])), 10);
+        
+        placemark = new YMaps.Placemark(map.getCenter(), {draggable: true, hasBalloon: false, style: "default#houseIcon"});
+        
+        map.addOverlay(placemark);
+        
+        /* YMaps.Events.observe(map, map.Events.Click, function (map, mEvent) {
+            var coord = mEvent.getGeoPoint();
+            console.log(coord);
+        });*/
+        
+        YMaps.Events.observe(placemark, placemark.Events.Click, function (obj) {
+            //map.removeOverlay(placemark);
+            placemark.closeBalloon();
+        });
+        
+        YMaps.Events.observe(placemark, placemark.Events.DragEnd, function (obj) {
+            var gp = placemark.getGeoPoint();
+            $('#'+id).val(gp.__lng + ',' + gp.__lat);
+            obj.update();
+        });
+        
+    });
+    
+    function showAddress () {
+        // Удаление предыдущего результата поиска
+        
+        var value = $("#address").val();
+        //map.removeOverlay(geoResult);
+        
+        var geocoder = new YMaps.Geocoder(value, {results: 1, boundedBy: map.getBounds()});
+        
+        YMaps.Events.observe(geocoder, geocoder.Events.Load, function () {
+            
+            // Если объект был найден, то добавляем его на карту
+            // и центрируем карту по области обзора найденного объекта
+            if (this.length()) {
+                //map.removeOverlay(placemark);
+                
+                geoResult = this.get(0);
+                var point = new YMaps.GeoPoint(geoResult._point.__lng, geoResult._point.__lat);
+                
+                placemark.setCoordPoint(point);
+                
+                map.setBounds(geoResult.getBounds());
+                var gp = placemark.getGeoPoint();
+                $('#'+id).val(gp.__lng + ',' + gp.__lat);
+                MODx.fireResourceFormChange();
+            }
+            else{
+                alert("Ничего не найдено")
+            }
+        });
+        
+        // Процесс геокодирования завершен неудачно
+        YMaps.Events.observe(geocoder, geocoder.Events.Fault, function (geocoder, error) {
+            alert("Произошла ошибка: " + error);
+        })
+    }
+    
+    
+    // window.onload = initialize;
+    {/literal}
+</script>

@@ -1,0 +1,16 @@
+<?php return array (
+  'unique_key' => 'key',
+  'preserve_keys' => true,
+  'update_object' => false,
+  'namespace' => 'typomce',
+  'resolve' => NULL,
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => '7e8c3eebedddd639a2f2ecfbbdce1278',
+  'package' => 'modx',
+  'class' => 'modSystemSetting',
+  'signature' => 'c0675eaa7d74d48b0bc2951f1098c9f4',
+  'native_key' => 'typo.convert_fonts_to_spans',
+  'object' => '{"key":"typo.convert_fonts_to_spans","value":true,"xtype":"combo-boolean","namespace":"typomce","area":"cleanup-output","editedon":null}',
+);

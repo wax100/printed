@@ -1,0 +1,62 @@
+<?php return array (
+  'preserve_keys' => true,
+  'update_object' => true,
+  'unique_key' => 'text',
+  'related_objects' => 
+  array (
+    'Action' => 
+    array (
+      '08ae170118f3e23a56d55f169e1d17ea' => 
+      array (
+        'preserve_keys' => false,
+        'update_object' => true,
+        'unique_key' => 
+        array (
+          0 => 'namespace',
+          1 => 'controller',
+        ),
+        'class' => 'modAction',
+        'object' => '{"id":1,"namespace":"redirector","controller":"controllers\\/index","haslayout":1,"lang_topics":"redirector:default","assets":"","help_url":"","parent":0}',
+        'guid' => '246ea7d4579e6baefa98fbffe494a96c',
+        'native_key' => 1,
+        'signature' => '8600548670925ca28af6e4942d2d4501',
+      ),
+    ),
+  ),
+  'related_object_attributes' => 
+  array (
+    'Action' => 
+    array (
+      'preserve_keys' => false,
+      'update_object' => true,
+      'unique_key' => 
+      array (
+        0 => 'namespace',
+        1 => 'controller',
+      ),
+    ),
+  ),
+  'namespace' => 'redirector',
+  'resolve' => 
+  array (
+    0 => 
+    array (
+      'type' => 'php',
+      'body' => '{"source":"redirector-2.0.5-pl\\/modMenu\\/af3a1f10af8e9c10f39dc1ecc53fd4eb.resolve.tables.resolver","type":"php","name":"resolve.tables"}',
+    ),
+    1 => 
+    array (
+      'type' => 'php',
+      'body' => '{"source":"redirector-2.0.5-pl\\/modMenu\\/af3a1f10af8e9c10f39dc1ecc53fd4eb.resolve.dbchanges.resolver","type":"php","name":"resolve.dbchanges"}',
+    ),
+  ),
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => 'c7ed5827bc9c8b0f5c6c2e862d1923bb',
+  'package' => 'modx',
+  'class' => 'modMenu',
+  'signature' => 'af3a1f10af8e9c10f39dc1ecc53fd4eb',
+  'native_key' => 'redirector',
+  'object' => '{"text":"redirector","parent":"components","action":1,"description":"redirector.menu_desc","icon":"images\\/icons\\/plugin.gif","menuindex":0,"params":"","handler":"","permissions":""}',
+);

@@ -1,0 +1,50 @@
+<?php return array (
+  'preserve_keys' => true,
+  'update_object' => true,
+  'unique_key' => 'text',
+  'related_objects' => 
+  array (
+    'Action' => 
+    array (
+      'ad19cf4dd5bedbed5469447f4365ce69' => 
+      array (
+        'preserve_keys' => false,
+        'update_object' => true,
+        'unique_key' => 
+        array (
+          0 => 'namespace',
+          1 => 'controller',
+        ),
+        'class' => 'modAction',
+        'object' => '{"id":1,"namespace":"setinputoptions","controller":"index","haslayout":1,"lang_topics":"setinputoptions:default","assets":"","help_url":"","parent":0}',
+        'guid' => '89a61d8322fb6f15bd039994d6a5ff5a',
+        'native_key' => 1,
+        'signature' => 'f143ee91de950d3dadbd33cdc0aba22e',
+      ),
+    ),
+  ),
+  'related_object_attributes' => 
+  array (
+    'Action' => 
+    array (
+      'preserve_keys' => false,
+      'update_object' => true,
+      'unique_key' => 
+      array (
+        0 => 'namespace',
+        1 => 'controller',
+      ),
+    ),
+  ),
+  'namespace' => 'setinputoptions',
+  'resolve' => NULL,
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => '53713016c02f50a52e45dd49d1e01abf',
+  'package' => 'modx',
+  'class' => 'modMenu',
+  'signature' => '70a426dd32d1a36c66a6a933cd17f936',
+  'native_key' => 'setinputoptions.menu.setinputoptions',
+  'object' => '{"text":"setinputoptions.menu.setinputoptions","parent":"components","action":1,"description":"setinputoptions.menu.setinputoptions_desc","icon":"","menuindex":0,"params":"","handler":"","permissions":"","namespace":"core"}',
+);

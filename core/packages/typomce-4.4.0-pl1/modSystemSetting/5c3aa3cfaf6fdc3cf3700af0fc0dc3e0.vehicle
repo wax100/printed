@@ -1,0 +1,16 @@
+<?php return array (
+  'unique_key' => 'key',
+  'preserve_keys' => true,
+  'update_object' => false,
+  'namespace' => 'typomce',
+  'resolve' => NULL,
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => 'c735629f8e5a3edca88dd2cb65d47382',
+  'package' => 'modx',
+  'class' => 'modSystemSetting',
+  'signature' => '5c3aa3cfaf6fdc3cf3700af0fc0dc3e0',
+  'native_key' => 'typo.theme_advanced_blockformats',
+  'object' => '{"key":"typo.theme_advanced_blockformats","value":"p,h1,h2,h3,h4,h5,h6,div,blockquote,code,pre,address","xtype":"textarea","namespace":"typomce","area":"advanced-theme","editedon":null}',
+);

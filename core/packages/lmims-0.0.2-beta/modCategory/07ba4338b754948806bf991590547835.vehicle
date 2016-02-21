@@ -1,0 +1,133 @@
+<?php return array (
+  'unique_key' => 'category',
+  'preserve_keys' => false,
+  'update_object' => true,
+  'related_objects' => 
+  array (
+    'Plugins' => 
+    array (
+      'f844c2c308ac9b50bade76fd46058522' => 
+      array (
+        'preserve_keys' => false,
+        'update_object' => true,
+        'unique_key' => 'name',
+        'class' => 'modPlugin',
+        'object' => '{"id":0,"source":1,"property_preprocess":0,"name":"lmims","description":"","editor_type":0,"category":0,"cache_type":0,"plugincode":"switch ($modx->event->name) {\\n\\tcase \'OnWebPagePrerender\':\\n\\t\\t$resource\\t= &$modx->resource;\\n\\t\\t$html\\t\\t= &$resource->_output;\\n\\t\\t$hash \\t\\t= sha1($html);\\n\\t\\t$date\\t\\t= time();\\n\\n\\n\\t\\t$protocol\\t= (!empty($_SERVER[\'HTTPS\']) && $_SERVER[\'HTTPS\'] !== \'off\' || $_SERVER[\'SERVER_PORT\'] == 443) ? \\"https:\\/\\/\\" : \\"http:\\/\\/\\";\\n\\t\\t$domain\\t\\t= $_SERVER[\'HTTP_HOST\'];\\n\\t\\t$uri\\t\\t= $_SERVER[\'REQUEST_URI\'];\\n\\t\\t$url\\t\\t= $protocol.$domain.$uri;\\n\\n\\t\\t$key\\t\\t= md5($resource->id.$url);\\n\\t\\t$lmimsRow\\t= $modx->getObject(\'modLMIMS\', array(\'key\' => $key));\\n\\t\\t\\/\\/ lmimsRow not exists\\n\\t\\tif ( !($lmimsRow instanceof modLMIMS) ) {\\n\\t\\t\\t\\/\\/ create new\\n\\t\\t\\t$lmimsRow\\t= $modx->newObject(\'modLMIMS\');\\n\\t\\t\\t$lmimsDate\\t= $date;\\n\\t\\t\\t$lmimsHash\\t= $hash;\\n\\t\\t\\t$lmimsRow->fromArray(array(\\n\\t\\t\\t\\t\'key\'\\t=> $key,\\n\\t\\t\\t\\t\'date\'\\t=> $lmimsDate,\\n\\t\\t\\t\\t\'hash\'\\t=> $lmimsHash,\\n\\t\\t\\t\\t\'resource\' => $resource->id,\\n\\t\\t\\t), \'\', true);\\n\\t\\t\\t$lmimsRow->save();\\n\\t\\t}\\n\\t\\t\\/\\/ get last modified data\\n\\t\\telse {\\n\\t\\t\\t$lmimsDate\\t= $lmimsRow->date;\\n\\t\\t\\t$lmimsHash\\t= $lmimsRow->hash;\\n\\t\\t}\\n\\n\\t\\t\\/\\/ if current document hash not equal hash from lmimsRow\\n\\t\\tif ($hash !== $lmimsHash) {\\n\\t\\t\\t$lmimsRow->fromArray(array(\\n\\t\\t\\t\\t\'key\'\\t=> $key,\\n\\t\\t\\t\\t\'date\'\\t=> $date,\\n\\t\\t\\t\\t\'hash\'\\t=> $hash\\n\\t\\t\\t), \'\', true);\\n\\t\\t\\t$lmimsRow->save();\\n\\t\\t\\t$lmimsDate\\t= $date;\\n\\t\\t\\t$lmimsHash\\t= $hash;\\n\\t\\t}\\n\\n\\t\\t\\/**\\n\\t\\t * http:\\/\\/last-modified.com\\/ru\\/last-modified-if-modified-since-php.html\\n\\t\\t *\\/\\n\\t\\t$LastModified\\t\\t= gmdate(\\"D, d M Y H:i:s \\\\G\\\\M\\\\T\\", $lmimsDate);\\n\\t\\t$IfModifiedSince\\t= false;\\n\\t\\tif (isset($_ENV[\'HTTP_IF_MODIFIED_SINCE\'])) {\\n\\t\\t\\t$IfModifiedSince = strtotime(substr($_ENV[\'HTTP_IF_MODIFIED_SINCE\'], 5));\\n\\t\\t}\\n\\t\\tif (isset($_SERVER[\'HTTP_IF_MODIFIED_SINCE\'])) {\\n\\t\\t\\t$IfModifiedSince = strtotime(substr($_SERVER[\'HTTP_IF_MODIFIED_SINCE\'], 5));\\n\\t\\t}\\n\\t\\tif ($IfModifiedSince && $IfModifiedSince >= $lmimsDate) {\\n\\t\\t\\theader($_SERVER[\'SERVER_PROTOCOL\'] . \' 304 Not Modified\');\\n\\t\\t\\texit;\\n\\t\\t}\\n\\t\\theader(\'Last-Modified: \'. $LastModified);\\n\\n\\t\\tbreak;\\n\\n\\tcase \'OnDocFormSave\':\\n\\t\\tif (!$modx->getOption(\'lmims_refresh_lmims_data_about_page_on_save\')) return;\\n\\t\\t\\n\\t\\t$protocol\\t= (!empty($_SERVER[\'HTTPS\']) && $_SERVER[\'HTTPS\'] !== \'off\' || $_SERVER[\'SERVER_PORT\'] == 443) ? \\"https\\" : \\"http\\";\\n\\t\\t$url\\t\\t= $modx->makeUrl($resource->id, \'\', \'\', $protocol);\\n\\n\\t\\tif (function_exists(\'curl_init\')) {\\n\\t\\t\\t$curl = curl_init($url);\\n\\t\\t\\tcurl_setopt($curl, CURLOPT_RETURNTRANSFER, true);\\n\\t\\t\\tcurl_setopt($curl, CURLOPT_HEADER, true);\\n\\t\\t\\tcurl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);\\n\\t\\t\\tcurl_setopt($curl, CURLOPT_AUTOREFERER, true);\\n\\t\\t\\tcurl_setopt($curl, CURLOPT_URL, $url);\\n\\t\\t\\tcurl_setopt($curl, CURLOPT_TIMEOUT, 10);\\n\\t\\t\\tcurl_exec($curl);\\n\\t\\t\\tcurl_close($curl);\\n\\t\\t} else {\\n\\t\\t\\tfile_get_contents($url);\\n\\t\\t}\\n\\n\\t\\tbreak;\\n\\n\\tcase \'OnBeforeEmptyTrash\':\\n\\t\\t$deletedids = $modx->event->params[\'ids\'];\\n\\t\\tif (!empty($deletedids)) {\\n\\t\\t\\t$modx->removeCollection(\'modLMIMS\', array(\\n\\t\\t\\t\\t\'resource:IN\' => $deletedids,\\n\\t\\t\\t));\\n\\t\\t}\\n\\t\\tbreak;\\n\\n\\tdefault:\\n\\t\\tbreak;\\n}","locked":0,"properties":null,"disabled":0,"moduleguid":"","static":0,"static_file":"F:\\\\openserver\\\\domains\\\\sendex\\\\lmims\\/core\\/components\\/lmims\\/elements\\/plugins\\/plugin.lmims.php","content":"switch ($modx->event->name) {\\n\\tcase \'OnWebPagePrerender\':\\n\\t\\t$resource\\t= &$modx->resource;\\n\\t\\t$html\\t\\t= &$resource->_output;\\n\\t\\t$hash \\t\\t= sha1($html);\\n\\t\\t$date\\t\\t= time();\\n\\n\\n\\t\\t$protocol\\t= (!empty($_SERVER[\'HTTPS\']) && $_SERVER[\'HTTPS\'] !== \'off\' || $_SERVER[\'SERVER_PORT\'] == 443) ? \\"https:\\/\\/\\" : \\"http:\\/\\/\\";\\n\\t\\t$domain\\t\\t= $_SERVER[\'HTTP_HOST\'];\\n\\t\\t$uri\\t\\t= $_SERVER[\'REQUEST_URI\'];\\n\\t\\t$url\\t\\t= $protocol.$domain.$uri;\\n\\n\\t\\t$key\\t\\t= md5($resource->id.$url);\\n\\t\\t$lmimsRow\\t= $modx->getObject(\'modLMIMS\', array(\'key\' => $key));\\n\\t\\t\\/\\/ lmimsRow not exists\\n\\t\\tif ( !($lmimsRow instanceof modLMIMS) ) {\\n\\t\\t\\t\\/\\/ create new\\n\\t\\t\\t$lmimsRow\\t= $modx->newObject(\'modLMIMS\');\\n\\t\\t\\t$lmimsDate\\t= $date;\\n\\t\\t\\t$lmimsHash\\t= $hash;\\n\\t\\t\\t$lmimsRow->fromArray(array(\\n\\t\\t\\t\\t\'key\'\\t=> $key,\\n\\t\\t\\t\\t\'date\'\\t=> $lmimsDate,\\n\\t\\t\\t\\t\'hash\'\\t=> $lmimsHash,\\n\\t\\t\\t\\t\'resource\' => $resource->id,\\n\\t\\t\\t), \'\', true);\\n\\t\\t\\t$lmimsRow->save();\\n\\t\\t}\\n\\t\\t\\/\\/ get last modified data\\n\\t\\telse {\\n\\t\\t\\t$lmimsDate\\t= $lmimsRow->date;\\n\\t\\t\\t$lmimsHash\\t= $lmimsRow->hash;\\n\\t\\t}\\n\\n\\t\\t\\/\\/ if current document hash not equal hash from lmimsRow\\n\\t\\tif ($hash !== $lmimsHash) {\\n\\t\\t\\t$lmimsRow->fromArray(array(\\n\\t\\t\\t\\t\'key\'\\t=> $key,\\n\\t\\t\\t\\t\'date\'\\t=> $date,\\n\\t\\t\\t\\t\'hash\'\\t=> $hash\\n\\t\\t\\t), \'\', true);\\n\\t\\t\\t$lmimsRow->save();\\n\\t\\t\\t$lmimsDate\\t= $date;\\n\\t\\t\\t$lmimsHash\\t= $hash;\\n\\t\\t}\\n\\n\\t\\t\\/**\\n\\t\\t * http:\\/\\/last-modified.com\\/ru\\/last-modified-if-modified-since-php.html\\n\\t\\t *\\/\\n\\t\\t$LastModified\\t\\t= gmdate(\\"D, d M Y H:i:s \\\\G\\\\M\\\\T\\", $lmimsDate);\\n\\t\\t$IfModifiedSince\\t= false;\\n\\t\\tif (isset($_ENV[\'HTTP_IF_MODIFIED_SINCE\'])) {\\n\\t\\t\\t$IfModifiedSince = strtotime(substr($_ENV[\'HTTP_IF_MODIFIED_SINCE\'], 5));\\n\\t\\t}\\n\\t\\tif (isset($_SERVER[\'HTTP_IF_MODIFIED_SINCE\'])) {\\n\\t\\t\\t$IfModifiedSince = strtotime(substr($_SERVER[\'HTTP_IF_MODIFIED_SINCE\'], 5));\\n\\t\\t}\\n\\t\\tif ($IfModifiedSince && $IfModifiedSince >= $lmimsDate) {\\n\\t\\t\\theader($_SERVER[\'SERVER_PROTOCOL\'] . \' 304 Not Modified\');\\n\\t\\t\\texit;\\n\\t\\t}\\n\\t\\theader(\'Last-Modified: \'. $LastModified);\\n\\n\\t\\tbreak;\\n\\n\\tcase \'OnDocFormSave\':\\n\\t\\tif (!$modx->getOption(\'lmims_refresh_lmims_data_about_page_on_save\')) return;\\n\\t\\t\\n\\t\\t$protocol\\t= (!empty($_SERVER[\'HTTPS\']) && $_SERVER[\'HTTPS\'] !== \'off\' || $_SERVER[\'SERVER_PORT\'] == 443) ? \\"https\\" : \\"http\\";\\n\\t\\t$url\\t\\t= $modx->makeUrl($resource->id, \'\', \'\', $protocol);\\n\\n\\t\\tif (function_exists(\'curl_init\')) {\\n\\t\\t\\t$curl = curl_init($url);\\n\\t\\t\\tcurl_setopt($curl, CURLOPT_RETURNTRANSFER, true);\\n\\t\\t\\tcurl_setopt($curl, CURLOPT_HEADER, true);\\n\\t\\t\\tcurl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);\\n\\t\\t\\tcurl_setopt($curl, CURLOPT_AUTOREFERER, true);\\n\\t\\t\\tcurl_setopt($curl, CURLOPT_URL, $url);\\n\\t\\t\\tcurl_setopt($curl, CURLOPT_TIMEOUT, 10);\\n\\t\\t\\tcurl_exec($curl);\\n\\t\\t\\tcurl_close($curl);\\n\\t\\t} else {\\n\\t\\t\\tfile_get_contents($url);\\n\\t\\t}\\n\\n\\t\\tbreak;\\n\\n\\tcase \'OnBeforeEmptyTrash\':\\n\\t\\t$deletedids = $modx->event->params[\'ids\'];\\n\\t\\tif (!empty($deletedids)) {\\n\\t\\t\\t$modx->removeCollection(\'modLMIMS\', array(\\n\\t\\t\\t\\t\'resource:IN\' => $deletedids,\\n\\t\\t\\t));\\n\\t\\t}\\n\\t\\tbreak;\\n\\n\\tdefault:\\n\\t\\tbreak;\\n}"}',
+        'guid' => '600d529522667ee3351b7f24799489b9',
+        'native_key' => 0,
+        'signature' => '12f0b8366ba43eb1144c1e98616a2e87',
+        'related_objects' => 
+        array (
+          'PluginEvents' => 
+          array (
+            '122fe722b5e54a37032e884fe712ea32' => 
+            array (
+              'preserve_keys' => true,
+              'update_object' => true,
+              'unique_key' => 
+              array (
+                0 => 'pluginid',
+                1 => 'event',
+              ),
+              'class' => 'modPluginEvent',
+              'object' => '{"pluginid":0,"event":"OnWebPagePrerender","priority":0,"propertyset":0}',
+              'guid' => '8ba45801ec8617cac56f5effa62d84ec',
+              'native_key' => 
+              array (
+                0 => 0,
+                1 => 'OnWebPagePrerender',
+              ),
+              'signature' => '0abb26a9b4c784c281276221a8c29e36',
+            ),
+            '22ae71c8b9dbfbc8f7b1d4d0819a03e9' => 
+            array (
+              'preserve_keys' => true,
+              'update_object' => true,
+              'unique_key' => 
+              array (
+                0 => 'pluginid',
+                1 => 'event',
+              ),
+              'class' => 'modPluginEvent',
+              'object' => '{"pluginid":0,"event":"OnDocFormSave","priority":0,"propertyset":0}',
+              'guid' => '51a2f66e9c151d9f46390c4a5c7da236',
+              'native_key' => 
+              array (
+                0 => 0,
+                1 => 'OnDocFormSave',
+              ),
+              'signature' => '7b1e93118b1c7e25dcecf1cef46dbe9d',
+            ),
+            'a3995c1d26d613da497593b0813c70fc' => 
+            array (
+              'preserve_keys' => true,
+              'update_object' => true,
+              'unique_key' => 
+              array (
+                0 => 'pluginid',
+                1 => 'event',
+              ),
+              'class' => 'modPluginEvent',
+              'object' => '{"pluginid":0,"event":"OnBeforeEmptyTrash","priority":0,"propertyset":0}',
+              'guid' => '2a6f9c5a155104084eac915a955fc3f5',
+              'native_key' => 
+              array (
+                0 => 0,
+                1 => 'OnBeforeEmptyTrash',
+              ),
+              'signature' => '43a3d3de376cf91221ee0d67a995d4be',
+            ),
+          ),
+        ),
+      ),
+    ),
+  ),
+  'related_object_attributes' => 
+  array (
+    'Plugins' => 
+    array (
+      'preserve_keys' => false,
+      'update_object' => true,
+      'unique_key' => 'name',
+    ),
+    'PluginEvents' => 
+    array (
+      'preserve_keys' => true,
+      'update_object' => true,
+      'unique_key' => 
+      array (
+        0 => 'pluginid',
+        1 => 'event',
+      ),
+    ),
+  ),
+  'namespace' => 'lmims',
+  'resolve' => 
+  array (
+    0 => NULL,
+    1 => 
+    array (
+      'type' => 'file',
+      'body' => '{"source":"lmims-0.0.2-beta\\/modCategory\\/07ba4338b754948806bf991590547835\\/1\\/","target":"return MODX_CORE_PATH . \'components\\/\';","name":"lmims"}',
+    ),
+    2 => 
+    array (
+      'type' => 'php',
+      'body' => '{"source":"lmims-0.0.2-beta\\/modCategory\\/07ba4338b754948806bf991590547835.resolve.extension.resolver","type":"php","name":"resolve.extension"}',
+    ),
+    3 => 
+    array (
+      'type' => 'php',
+      'body' => '{"source":"lmims-0.0.2-beta\\/modCategory\\/07ba4338b754948806bf991590547835.resolve.tables.resolver","type":"php","name":"resolve.tables"}',
+    ),
+  ),
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => '25eee977783e7fde92a2ab610ac40d19',
+  'package' => 'modx',
+  'class' => 'modCategory',
+  'signature' => '07ba4338b754948806bf991590547835',
+  'native_key' => 1,
+  'object' => '{"id":1,"parent":0,"category":"lmims"}',
+);

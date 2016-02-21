@@ -1,0 +1,6 @@
+[2016-02-21 13:20:56] (ERROR @ /connectors/system/phpthumb.php) phpThumb was unable to generate a thumbnail for: F:\openserver\domains\printed\core\cache\phpthumb\printed__src1a0348ac30d2c633f829610996241d32_par397327b300e2532553c171cb19a456f3_dat0.jpeg
+[2016-02-21 13:20:56] (ERROR @ /connectors/system/phpthumb.php) Error outputting thumbnail:
+OutputThumbnail() failed because !is_resource($this->gdimg_output) in file "phpthumb.class.php" on line 572
+[2016-02-21 13:20:56] (ERROR @ /connectors/system/phpthumb.php) phpThumb was unable to generate a thumbnail for: F:\openserver\domains\printed\core\cache\phpthumb\printed__src1a0348ac30d2c633f829610996241d32_par397327b300e2532553c171cb19a456f3_dat0.jpeg
+[2016-02-21 13:20:56] (ERROR @ /connectors/system/phpthumb.php) Error outputting thumbnail:
+OutputThumbnail() failed because !is_resource($this->gdimg_output) in file "phpthumb.class.php" on line 572

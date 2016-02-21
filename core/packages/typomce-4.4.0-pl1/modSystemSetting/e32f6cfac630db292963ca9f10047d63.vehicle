@@ -1,0 +1,16 @@
+<?php return array (
+  'unique_key' => 'key',
+  'preserve_keys' => true,
+  'update_object' => false,
+  'namespace' => 'typomce',
+  'resolve' => NULL,
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => 'e737fffbeaee299b6761b0d05e5ed3f0',
+  'package' => 'modx',
+  'class' => 'modSystemSetting',
+  'signature' => 'e32f6cfac630db292963ca9f10047d63',
+  'native_key' => 'typo.object_resizing',
+  'object' => '{"key":"typo.object_resizing","value":true,"xtype":"combo-boolean","namespace":"typomce","area":"cleanup-output","editedon":null}',
+);

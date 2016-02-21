@@ -1,0 +1,206 @@
+<?php return array (
+  'unique_key' => 'category',
+  'preserve_keys' => false,
+  'update_object' => true,
+  'related_objects' => 
+  array (
+    'Plugins' => 
+    array (
+      '4cdb877c6a4bffe7b6a1f78d067c38e5' => 
+      array (
+        'preserve_keys' => false,
+        'update_object' => true,
+        'unique_key' => 'name',
+        'class' => 'modPlugin',
+        'object' => '{"id":null,"source":1,"property_preprocess":0,"name":"autoRedirector","description":"","editor_type":0,"category":0,"cache_type":0,"plugincode":"$resourceEvents = array(\'OnBeforeDocFormSave\', \'OnDocFormSave\');\\nif (in_array($modx->event->name, $resourceEvents)) {\\n    foreach($scriptProperties as & $object){\\n        if(\\n            is_object($object)\\n            AND $object instanceof modResource\\n            AND $original = $modx->getObject(\'modResource\', $object->id)\\n        ){\\n            $resource = $object;\\n            break;\\n        }\\n    }\\n}\\nswitch ($modx->event->name) {\\n    case \\"OnManagerPageInit\\":\\n\\t$cssFile = MODX_ASSETS_URL.\'components\\/autoredirector\\/css\\/mgr\\/main.css\';\\n\\t$modx->regClientCSS($cssFile);\\n\\tbreak;\\n\\n    case \\"OnBeforeDocFormSave\\":\\n        $resources = array(\\n                $resource,\\n                $modx->getObject(\'modResource\',$resource->get(\'parent\'))\\n            );\\n        if($child_ids = $modx->getChildIds($resource->id,50,array(\'context\' => $resource->context_key))){\\n            $resources = array_merge($resources, $modx->getCollection(\'modResource\',array(\\"id:IN\\" => $child_ids)));\\n        }\\n    case \\"OnResourceBeforeSort\\":\\n        if (empty($resources)) {\\n            foreach ($nodes as $node) {\\n                $resources[] = $modx->getObject(\'modResource\',$node[\'id\']);\\n            }\\n        }\\n        foreach ($resources as $res) {\\n            if (!empty($res)) {\\n                if (!$res->getProperty(\'old_uri\',\'autoredirector\')) {\\n                    $res->setProperty(\'old_uri\',$res->get(\'uri\'),\'autoredirector\');\\n                    $res->save();\\n                }\\n            }\\n        }\\n        break;\\n    case \\"OnDocFormSave\\":\\n        $resources = array(\\n                $resource,\\n                $modx->getObject(\'modResource\',$resource->get(\'parent\'))\\n            );\\n        if($child_ids = $modx->getChildIds($resource->id,50,array(\'context\' => $resource->context_key))){\\n            $resources = array_merge($resources, $modx->getCollection(\'modResource\',array(\\"id:IN\\" => $child_ids)));\\n        }\\n    case \\"OnResourceSort\\":\\n        if (empty($resources)) {\\n            foreach ($nodesAffected as $node) {\\n                $resources[] = $node;\\n            }\\n        }\\n        $modelPath = $modx->getOption(\'autoredirector_core_path\',null,$modx->getOption(\'core_path\').\'components\\/autoredirector\\/\').\'model\\/\';\\n\\t\\t$modx->addPackage(\'autoredirector\', $modelPath);\\n        $processorProps = array(\'processors_path\' => $modx->getOption(\'autoredirector_core_path\',null,$modx->getOption(\'core_path\').\'components\\/autoredirector\\/\').\'processors\\/\');\\n        foreach ($resources as $res) {\\n            if (!empty($res)) {\\n                $old_uri = $res->getProperty(\'old_uri\',\'autoredirector\');\\n                $current_uri = $res->getAliasPath($res->get(\'alias\'));\\n                if ($old_uri && $current_uri != $old_uri) {\\n                    $currentRuleQ = array(\'uri\' => $current_uri);\\n                    if (!$modx->getOption(\'global_duplicate_uri_check\')) {\\n                        $currentRuleQ[\'context_key\'] = $res->get(\'context_key\');\\n                    }\\n                    if ($currentRule = $modx->getObject(\'arRule\', $currentRuleQ)) {\\n                        $response = $modx->runProcessor(\'mgr\\/item\\/remove\', $currentRule->toArray(), $processorProps);\\n                        if ($response->isError()) {\\n                            $modx->log(modX::LOG_LEVEL_ERROR, \'AutoRedirector removing error. Message: \'.$response->getMessage());\\n                        }\\n                    }\\n                    $arRule = array(\'uri\' => $old_uri\\n                        , \'context_key\' => $res->get(\'context_key\')\\n                        , \'res_id\' => $res->get(\'id\'));\\n                    if (!$modx->getObject(\'arRule\', $arRule)) {\\n                        $response = $modx->runProcessor(\'mgr\\/item\\/create\', $arRule, $processorProps);\\n                        if ($response->isError()) {\\n                            $modx->log(modX::LOG_LEVEL_ERROR, \'AutoRedirector creating error. Message: \'.$response->getMessage());\\n                        }\\n                    }\\n                }\\n                $res->setProperty(\'old_uri\',$current_uri,\'autoredirector\');\\n                $res->save();\\n            }\\n        }\\n        break;\\n    case \\"OnPageNotFound\\":\\n        $uri = $_SERVER[\'REQUEST_URI\'];\\n        $uri = str_replace($modx->getOption(\\"site_url\\"),\\"\\",$uri);\\n        if (substr($uri, 0, 1) == \\"\\/\\") $uri = substr($uri, 1);\\n\\n        $RuleQ = array(\'uri\' => $uri);\\n        if (!$modx->getOption(\'global_duplicate_uri_check\')) {\\n            $RuleQ[\'context_key\'] = $modx->context->get(\'key\');\\n        }\\n        $modelPath = $modx->getOption(\'autoredirector_core_path\',null,$modx->getOption(\'core_path\').\'components\\/autoredirector\\/\').\'model\\/\';\\n    \\t$modx->addPackage(\'autoredirector\', $modelPath);\\n        if ($Rule = $modx->getObject(\'arRule\', $RuleQ)) {\\n            if ($url = $modx->makeUrl($Rule->get(\'res_id\'))) {\\n                $modx->sendRedirect($url,array(\'responseCode\' => \'HTTP\\/1.1 301 Moved Permanently\'));\\n            }\\n        }\\n        break;\\n}","locked":0,"properties":null,"disabled":0,"moduleguid":"","static":0,"static_file":"core\\/components\\/autoredirector\\/elements\\/plugins\\/plugin.autoredirector.php","content":"$resourceEvents = array(\'OnBeforeDocFormSave\', \'OnDocFormSave\');\\nif (in_array($modx->event->name, $resourceEvents)) {\\n    foreach($scriptProperties as & $object){\\n        if(\\n            is_object($object)\\n            AND $object instanceof modResource\\n            AND $original = $modx->getObject(\'modResource\', $object->id)\\n        ){\\n            $resource = $object;\\n            break;\\n        }\\n    }\\n}\\nswitch ($modx->event->name) {\\n    case \\"OnManagerPageInit\\":\\n\\t$cssFile = MODX_ASSETS_URL.\'components\\/autoredirector\\/css\\/mgr\\/main.css\';\\n\\t$modx->regClientCSS($cssFile);\\n\\tbreak;\\n\\n    case \\"OnBeforeDocFormSave\\":\\n        $resources = array(\\n                $resource,\\n                $modx->getObject(\'modResource\',$resource->get(\'parent\'))\\n            );\\n        if($child_ids = $modx->getChildIds($resource->id,50,array(\'context\' => $resource->context_key))){\\n            $resources = array_merge($resources, $modx->getCollection(\'modResource\',array(\\"id:IN\\" => $child_ids)));\\n        }\\n    case \\"OnResourceBeforeSort\\":\\n        if (empty($resources)) {\\n            foreach ($nodes as $node) {\\n                $resources[] = $modx->getObject(\'modResource\',$node[\'id\']);\\n            }\\n        }\\n        foreach ($resources as $res) {\\n            if (!empty($res)) {\\n                if (!$res->getProperty(\'old_uri\',\'autoredirector\')) {\\n                    $res->setProperty(\'old_uri\',$res->get(\'uri\'),\'autoredirector\');\\n                    $res->save();\\n                }\\n            }\\n        }\\n        break;\\n    case \\"OnDocFormSave\\":\\n        $resources = array(\\n                $resource,\\n                $modx->getObject(\'modResource\',$resource->get(\'parent\'))\\n            );\\n        if($child_ids = $modx->getChildIds($resource->id,50,array(\'context\' => $resource->context_key))){\\n            $resources = array_merge($resources, $modx->getCollection(\'modResource\',array(\\"id:IN\\" => $child_ids)));\\n        }\\n    case \\"OnResourceSort\\":\\n        if (empty($resources)) {\\n            foreach ($nodesAffected as $node) {\\n                $resources[] = $node;\\n            }\\n        }\\n        $modelPath = $modx->getOption(\'autoredirector_core_path\',null,$modx->getOption(\'core_path\').\'components\\/autoredirector\\/\').\'model\\/\';\\n\\t\\t$modx->addPackage(\'autoredirector\', $modelPath);\\n        $processorProps = array(\'processors_path\' => $modx->getOption(\'autoredirector_core_path\',null,$modx->getOption(\'core_path\').\'components\\/autoredirector\\/\').\'processors\\/\');\\n        foreach ($resources as $res) {\\n            if (!empty($res)) {\\n                $old_uri = $res->getProperty(\'old_uri\',\'autoredirector\');\\n                $current_uri = $res->getAliasPath($res->get(\'alias\'));\\n                if ($old_uri && $current_uri != $old_uri) {\\n                    $currentRuleQ = array(\'uri\' => $current_uri);\\n                    if (!$modx->getOption(\'global_duplicate_uri_check\')) {\\n                        $currentRuleQ[\'context_key\'] = $res->get(\'context_key\');\\n                    }\\n                    if ($currentRule = $modx->getObject(\'arRule\', $currentRuleQ)) {\\n                        $response = $modx->runProcessor(\'mgr\\/item\\/remove\', $currentRule->toArray(), $processorProps);\\n                        if ($response->isError()) {\\n                            $modx->log(modX::LOG_LEVEL_ERROR, \'AutoRedirector removing error. Message: \'.$response->getMessage());\\n                        }\\n                    }\\n                    $arRule = array(\'uri\' => $old_uri\\n                        , \'context_key\' => $res->get(\'context_key\')\\n                        , \'res_id\' => $res->get(\'id\'));\\n                    if (!$modx->getObject(\'arRule\', $arRule)) {\\n                        $response = $modx->runProcessor(\'mgr\\/item\\/create\', $arRule, $processorProps);\\n                        if ($response->isError()) {\\n                            $modx->log(modX::LOG_LEVEL_ERROR, \'AutoRedirector creating error. Message: \'.$response->getMessage());\\n                        }\\n                    }\\n                }\\n                $res->setProperty(\'old_uri\',$current_uri,\'autoredirector\');\\n                $res->save();\\n            }\\n        }\\n        break;\\n    case \\"OnPageNotFound\\":\\n        $uri = $_SERVER[\'REQUEST_URI\'];\\n        $uri = str_replace($modx->getOption(\\"site_url\\"),\\"\\",$uri);\\n        if (substr($uri, 0, 1) == \\"\\/\\") $uri = substr($uri, 1);\\n\\n        $RuleQ = array(\'uri\' => $uri);\\n        if (!$modx->getOption(\'global_duplicate_uri_check\')) {\\n            $RuleQ[\'context_key\'] = $modx->context->get(\'key\');\\n        }\\n        $modelPath = $modx->getOption(\'autoredirector_core_path\',null,$modx->getOption(\'core_path\').\'components\\/autoredirector\\/\').\'model\\/\';\\n    \\t$modx->addPackage(\'autoredirector\', $modelPath);\\n        if ($Rule = $modx->getObject(\'arRule\', $RuleQ)) {\\n            if ($url = $modx->makeUrl($Rule->get(\'res_id\'))) {\\n                $modx->sendRedirect($url,array(\'responseCode\' => \'HTTP\\/1.1 301 Moved Permanently\'));\\n            }\\n        }\\n        break;\\n}"}',
+        'guid' => 'ea64c82b8c876dc4afe5058aa3159b29',
+        'native_key' => NULL,
+        'signature' => 'b0783c71b6401ec0e3bc9f0a008ae3a0',
+        'related_objects' => 
+        array (
+          'PluginEvents' => 
+          array (
+            '1c1660473bc4fc867fe3eca6f9cafa77' => 
+            array (
+              'preserve_keys' => true,
+              'update_object' => true,
+              'unique_key' => 
+              array (
+                0 => 'pluginid',
+                1 => 'event',
+              ),
+              'class' => 'modPluginEvent',
+              'object' => '{"pluginid":0,"event":"OnManagerPageInit","priority":0,"propertyset":0}',
+              'guid' => 'cd2969053cc60b937d7e20d099a5786f',
+              'native_key' => 
+              array (
+                0 => 0,
+                1 => 'OnManagerPageInit',
+              ),
+              'signature' => 'c8992387be197c6468a5a50c8c8ab645',
+            ),
+            '4a755b718bf42d9410fc9f891bc678c6' => 
+            array (
+              'preserve_keys' => true,
+              'update_object' => true,
+              'unique_key' => 
+              array (
+                0 => 'pluginid',
+                1 => 'event',
+              ),
+              'class' => 'modPluginEvent',
+              'object' => '{"pluginid":0,"event":"OnBeforeDocFormSave","priority":0,"propertyset":0}',
+              'guid' => '04ab4aeb69bc3b0367b43a626ce355cf',
+              'native_key' => 
+              array (
+                0 => 0,
+                1 => 'OnBeforeDocFormSave',
+              ),
+              'signature' => '3c80b634c90d01d32e85cbdb7e6ab9c6',
+            ),
+            'f583736995fe888c104cd5846d562394' => 
+            array (
+              'preserve_keys' => true,
+              'update_object' => true,
+              'unique_key' => 
+              array (
+                0 => 'pluginid',
+                1 => 'event',
+              ),
+              'class' => 'modPluginEvent',
+              'object' => '{"pluginid":0,"event":"OnResourceBeforeSort","priority":0,"propertyset":0}',
+              'guid' => '5a8eb434f2f4aec81b2a0056f102c94e',
+              'native_key' => 
+              array (
+                0 => 0,
+                1 => 'OnResourceBeforeSort',
+              ),
+              'signature' => 'f22a6633dc792e5925bf476ac032add5',
+            ),
+            '568d5c5b1297e8dc3de85233f35c65db' => 
+            array (
+              'preserve_keys' => true,
+              'update_object' => true,
+              'unique_key' => 
+              array (
+                0 => 'pluginid',
+                1 => 'event',
+              ),
+              'class' => 'modPluginEvent',
+              'object' => '{"pluginid":0,"event":"OnDocFormSave","priority":0,"propertyset":0}',
+              'guid' => 'a6a6a1efac69d8af651cdbaa6c1d09ac',
+              'native_key' => 
+              array (
+                0 => 0,
+                1 => 'OnDocFormSave',
+              ),
+              'signature' => '95db8baa945ff6dc58357fa1bc063d05',
+            ),
+            '789550f90b7abc8cf47ee6fdb67ccd51' => 
+            array (
+              'preserve_keys' => true,
+              'update_object' => true,
+              'unique_key' => 
+              array (
+                0 => 'pluginid',
+                1 => 'event',
+              ),
+              'class' => 'modPluginEvent',
+              'object' => '{"pluginid":0,"event":"OnResourceSort","priority":0,"propertyset":0}',
+              'guid' => 'ecc38f6ab0bbb241e58600d06780b3ea',
+              'native_key' => 
+              array (
+                0 => 0,
+                1 => 'OnResourceSort',
+              ),
+              'signature' => 'f7b0f6e4449c79a56ec1e15d7ec61570',
+            ),
+            '8aaaec531db4212f5a16d1282ff5401e' => 
+            array (
+              'preserve_keys' => true,
+              'update_object' => true,
+              'unique_key' => 
+              array (
+                0 => 'pluginid',
+                1 => 'event',
+              ),
+              'class' => 'modPluginEvent',
+              'object' => '{"pluginid":0,"event":"OnPageNotFound","priority":0,"propertyset":0}',
+              'guid' => '095a4749a63bcbe737d532c2c192eda6',
+              'native_key' => 
+              array (
+                0 => 0,
+                1 => 'OnPageNotFound',
+              ),
+              'signature' => 'b751ce99c1e558d7eb1df828f68e03d6',
+            ),
+          ),
+        ),
+      ),
+    ),
+  ),
+  'related_object_attributes' => 
+  array (
+    'Snippets' => 
+    array (
+      'preserve_keys' => false,
+      'update_object' => true,
+      'unique_key' => 'name',
+    ),
+    'Chunks' => 
+    array (
+      'preserve_keys' => false,
+      'update_object' => false,
+      'unique_key' => 'name',
+    ),
+    'Plugins' => 
+    array (
+      'preserve_keys' => false,
+      'update_object' => true,
+      'unique_key' => 'name',
+    ),
+    'PluginEvents' => 
+    array (
+      'preserve_keys' => true,
+      'update_object' => true,
+      'unique_key' => 
+      array (
+        0 => 'pluginid',
+        1 => 'event',
+      ),
+    ),
+  ),
+  'namespace' => 'autoredirector',
+  'resolve' => 
+  array (
+    0 => 
+    array (
+      'type' => 'file',
+      'body' => '{"source":"autoredirector-0.0.9-beta\\/modCategory\\/29af600f9436b3682021323dc665105f\\/0\\/","target":"return MODX_ASSETS_PATH . \'components\\/\';","name":"autoredirector"}',
+    ),
+    1 => 
+    array (
+      'type' => 'file',
+      'body' => '{"source":"autoredirector-0.0.9-beta\\/modCategory\\/29af600f9436b3682021323dc665105f\\/1\\/","target":"return MODX_CORE_PATH . \'components\\/\';","name":"autoredirector"}',
+    ),
+    2 => 
+    array (
+      'type' => 'php',
+      'body' => '{"source":"autoredirector-0.0.9-beta\\/modCategory\\/29af600f9436b3682021323dc665105f.resolve.tables.resolver","type":"php","name":"resolve.tables"}',
+    ),
+    3 => 
+    array (
+      'type' => 'php',
+      'body' => '{"source":"autoredirector-0.0.9-beta\\/modCategory\\/29af600f9436b3682021323dc665105f.resolve.chunks.resolver","type":"php","name":"resolve.chunks"}',
+    ),
+  ),
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => 'f5fbe63b973dbf376aff1f9c703ec57f',
+  'package' => 'modx',
+  'class' => 'modCategory',
+  'signature' => '29af600f9436b3682021323dc665105f',
+  'native_key' => NULL,
+  'object' => '{"id":null,"parent":0,"category":"autoRedirector"}',
+);

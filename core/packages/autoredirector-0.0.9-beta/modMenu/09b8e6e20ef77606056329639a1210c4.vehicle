@@ -1,0 +1,50 @@
+<?php return array (
+  'preserve_keys' => true,
+  'update_object' => false,
+  'unique_key' => 'text',
+  'related_objects' => 
+  array (
+    'Action' => 
+    array (
+      'cd802546e03449746adc4d686b03aa4e' => 
+      array (
+        'preserve_keys' => false,
+        'update_object' => false,
+        'unique_key' => 
+        array (
+          0 => 'namespace',
+          1 => 'controller',
+        ),
+        'class' => 'modAction',
+        'object' => '{"id":0,"namespace":"autoredirector","controller":"index","haslayout":1,"lang_topics":"autoredirector:default","assets":"","help_url":"","parent":0}',
+        'guid' => 'ed021ff8c1aa6583911b86340c2e2c15',
+        'native_key' => 0,
+        'signature' => 'fa3e90fe4996c36d0c55fd54e63ddf1d',
+      ),
+    ),
+  ),
+  'related_object_attributes' => 
+  array (
+    'Action' => 
+    array (
+      'preserve_keys' => false,
+      'update_object' => false,
+      'unique_key' => 
+      array (
+        0 => 'namespace',
+        1 => 'controller',
+      ),
+    ),
+  ),
+  'namespace' => 'autoredirector',
+  'resolve' => NULL,
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => '8cb129864fe73ca5942f6ae1daac8ce4',
+  'package' => 'modx',
+  'class' => 'modMenu',
+  'signature' => '09b8e6e20ef77606056329639a1210c4',
+  'native_key' => 'autoredirector',
+  'object' => '{"text":"autoredirector","parent":"components","action":0,"description":"autoredirector_menu_desc","icon":"images\\/icons\\/plugin.gif","menuindex":0,"params":"","handler":"","permissions":"","namespace":"core"}',
+);

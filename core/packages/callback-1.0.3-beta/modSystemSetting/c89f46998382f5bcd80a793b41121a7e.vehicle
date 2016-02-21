@@ -1,0 +1,16 @@
+<?php return array (
+  'unique_key' => 'key',
+  'preserve_keys' => true,
+  'update_object' => true,
+  'namespace' => 'callback',
+  'resolve' => NULL,
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => '8c633945f5c91c40a4c8155072ea7882',
+  'package' => 'modx',
+  'class' => 'modSystemSetting',
+  'signature' => 'c89f46998382f5bcd80a793b41121a7e',
+  'native_key' => 'callback.password',
+  'object' => '{"key":"callback.password","value":"","xtype":"text-password","namespace":"callback","area":"callback","editedon":null}',
+);

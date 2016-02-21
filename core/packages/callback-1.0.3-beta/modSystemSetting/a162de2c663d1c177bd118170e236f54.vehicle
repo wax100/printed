@@ -1,0 +1,16 @@
+<?php return array (
+  'unique_key' => 'key',
+  'preserve_keys' => true,
+  'update_object' => true,
+  'namespace' => 'callback',
+  'resolve' => NULL,
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => '0b8686e90b7c9f0373b2167d5431da63',
+  'package' => 'modx',
+  'class' => 'modSystemSetting',
+  'signature' => 'a162de2c663d1c177bd118170e236f54',
+  'native_key' => 'callback.error_bool',
+  'object' => '{"key":"callback.error_bool","value":"0","xtype":"combo-boolean","namespace":"callback","area":"callback","editedon":null}',
+);

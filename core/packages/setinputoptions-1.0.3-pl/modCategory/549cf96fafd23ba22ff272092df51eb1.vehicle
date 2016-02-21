@@ -1,0 +1,121 @@
+<?php return array (
+  'unique_key' => 'category',
+  'preserve_keys' => false,
+  'update_object' => true,
+  'related_objects' => 
+  array (
+    'Chunks' => 
+    array (
+      '63503c6c01318d8b644466982e3fe9d3' => 
+      array (
+        'preserve_keys' => false,
+        'update_object' => true,
+        'unique_key' => 'name',
+        'class' => 'modChunk',
+        'object' => '{"id":null,"source":0,"property_preprocess":0,"name":"inputOptionsRow","description":"","editor_type":0,"category":0,"cache_type":0,"snippet":"[[+name]]","locked":0,"properties":"a:0:{}","static":0,"static_file":"","content":"[[+name]]"}',
+        'guid' => '33f14873d957d7ab2bb3dd4fe1d32f6f',
+        'native_key' => NULL,
+        'signature' => '3a5f8f8cb9644b431e7531f3945a209a',
+      ),
+    ),
+    'Snippets' => 
+    array (
+      '9aea4a31ba22a035ef442af637dc9011' => 
+      array (
+        'preserve_keys' => false,
+        'update_object' => true,
+        'unique_key' => 'name',
+        'class' => 'modSnippet',
+        'object' => '{"id":null,"source":0,"property_preprocess":0,"name":"getInputOptions","description":"","editor_type":0,"category":0,"cache_type":0,"snippet":"\\/**\\n * This snippet can be used to list the input option values in your chunks and templates.\\n *\\n * Example usage: [[getInputOptions? &tv=`[[*your_template_variable]]`]]\\n *\\n * @package SetInputOptions\\n *\\/\\n\\n\\/\\/ Include SetInputOptions class\\nrequire_once $modx->getOption(\'setinputoptions.core_path\', null, $modx->getOption(\'core_path\').\'components\\/setinputoptions\\/\').\'model\\/setinputoptions\\/setinputoptions.class.php\';\\n\\n$setinputoptions = $modx->getService(\'setinputoptions\', \'setinputoptions\', $modx->getOption(\'setinputoptions.core_path\', null, $modx->getOption(\'core_path\').\'components\\/setinputoptions\\/\').\'model\\/setinputoptions\\/\', $scriptProperties);\\n\\nif (!($setinputoptions instanceof setinputoptions)) {\\n    return \'\';\\n}\\n\\n$tpl = $modx->getOption(\'tpl\', $scriptProperties, \\"inputOptionsRow\\");\\n$delimiter = $modx->getOption(\'delimiter\', $scriptProperties, \\",\\");\\n$templateVariable = $modx->getOption(\'tv\', $scriptProperties);\\n$outputDelimiter = $modx->getOption(\'outputDelimiter\', $scriptProperties, \\"\\\\n\\");\\n\\nif (is_null($templateVariable)) {\\n    return \'You forgot the tv parameter.\';\\n}\\n\\n$query = $modx->newQuery(\'SetInputOptionsInputOption\');\\n$query->where(array(\'id:IN\' => explode($delimiter, $templateVariable)));\\n$query->sortBy(\\"position\\");\\n$inputOptions = $modx->getCollection(\'SetInputOptionsInputOption\', $query);\\n\\n$list = array();\\nforeach ($inputOptions as $value) {\\n    $list[] = $modx->getChunk($tpl, $value->toArray());\\n}\\n\\n\\/* output *\\/\\n\\n$output = implode($outputDelimiter, $list);\\n\\n\\/* by default just return output *\\/\\nreturn $output;","locked":0,"properties":"a:0:{}","moduleguid":"","static":0,"static_file":"","content":"\\/**\\n * This snippet can be used to list the input option values in your chunks and templates.\\n *\\n * Example usage: [[getInputOptions? &tv=`[[*your_template_variable]]`]]\\n *\\n * @package SetInputOptions\\n *\\/\\n\\n\\/\\/ Include SetInputOptions class\\nrequire_once $modx->getOption(\'setinputoptions.core_path\', null, $modx->getOption(\'core_path\').\'components\\/setinputoptions\\/\').\'model\\/setinputoptions\\/setinputoptions.class.php\';\\n\\n$setinputoptions = $modx->getService(\'setinputoptions\', \'setinputoptions\', $modx->getOption(\'setinputoptions.core_path\', null, $modx->getOption(\'core_path\').\'components\\/setinputoptions\\/\').\'model\\/setinputoptions\\/\', $scriptProperties);\\n\\nif (!($setinputoptions instanceof setinputoptions)) {\\n    return \'\';\\n}\\n\\n$tpl = $modx->getOption(\'tpl\', $scriptProperties, \\"inputOptionsRow\\");\\n$delimiter = $modx->getOption(\'delimiter\', $scriptProperties, \\",\\");\\n$templateVariable = $modx->getOption(\'tv\', $scriptProperties);\\n$outputDelimiter = $modx->getOption(\'outputDelimiter\', $scriptProperties, \\"\\\\n\\");\\n\\nif (is_null($templateVariable)) {\\n    return \'You forgot the tv parameter.\';\\n}\\n\\n$query = $modx->newQuery(\'SetInputOptionsInputOption\');\\n$query->where(array(\'id:IN\' => explode($delimiter, $templateVariable)));\\n$query->sortBy(\\"position\\");\\n$inputOptions = $modx->getCollection(\'SetInputOptionsInputOption\', $query);\\n\\n$list = array();\\nforeach ($inputOptions as $value) {\\n    $list[] = $modx->getChunk($tpl, $value->toArray());\\n}\\n\\n\\/* output *\\/\\n\\n$output = implode($outputDelimiter, $list);\\n\\n\\/* by default just return output *\\/\\nreturn $output;"}',
+        'guid' => '3c6a02788ab72a054263eb53eb20c52e',
+        'native_key' => NULL,
+        'signature' => '691f8d413df9f3f038b93f1e7771226a',
+      ),
+    ),
+  ),
+  'related_object_attributes' => 
+  array (
+    'Children' => 
+    array (
+      'preserve_keys' => false,
+      'update_object' => true,
+      'unique_key' => 
+      array (
+        0 => 'parent',
+        1 => 'category',
+      ),
+    ),
+    'Snippets' => 
+    array (
+      'preserve_keys' => false,
+      'update_object' => true,
+      'unique_key' => 'name',
+    ),
+    'Chunks' => 
+    array (
+      'preserve_keys' => false,
+      'update_object' => true,
+      'unique_key' => 'name',
+    ),
+    'Templates' => 
+    array (
+      'preserve_keys' => false,
+      'update_object' => true,
+      'unique_key' => 'templatename',
+    ),
+    'TemplateVars' => 
+    array (
+      'preserve_keys' => false,
+      'update_object' => true,
+      'unique_key' => 'name',
+    ),
+    'Plugins' => 
+    array (
+      'unique_key' => 'name',
+      'preserve_keys' => false,
+      'update_object' => true,
+      'related_objects' => true,
+      'related_object_attributes' => 
+      array (
+        'PluginEvents' => 
+        array (
+          'preserve_keys' => true,
+          'update_object' => false,
+          'unique_key' => 
+          array (
+            0 => 'pluginid',
+            1 => 'event',
+          ),
+        ),
+      ),
+    ),
+  ),
+  'namespace' => 'setinputoptions',
+  'resolve' => 
+  array (
+    0 => 
+    array (
+      'type' => 'file',
+      'body' => '{"source":"setinputoptions-1.0.3-pl\\/modCategory\\/549cf96fafd23ba22ff272092df51eb1\\/0\\/","target":"return MODX_ASSETS_PATH . \'components\\/\';","name":"setinputoptions"}',
+    ),
+    1 => 
+    array (
+      'type' => 'file',
+      'body' => '{"source":"setinputoptions-1.0.3-pl\\/modCategory\\/549cf96fafd23ba22ff272092df51eb1\\/1\\/","target":"return MODX_CORE_PATH . \'components\\/\';","name":"setinputoptions"}',
+    ),
+    2 => 
+    array (
+      'type' => 'php',
+      'body' => '{"source":"setinputoptions-1.0.3-pl\\/modCategory\\/549cf96fafd23ba22ff272092df51eb1.gpm.resolve.tables.resolver","type":"php","name":"gpm.resolve.tables"}',
+    ),
+  ),
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => '68a8ae224ac9f311d7ec926be1e67d85',
+  'package' => 'modx',
+  'class' => 'modCategory',
+  'signature' => '549cf96fafd23ba22ff272092df51eb1',
+  'native_key' => NULL,
+  'object' => '{"id":null,"parent":0,"category":"SetInputOptions"}',
+);

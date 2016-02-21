@@ -1,0 +1,10 @@
+Changelog for lmims.
+
+0.0.2 beta (vgrish@gmail.com)
+====================================
+- Fixed: Bug with html field.
+- Fixed: Remove modLMIMS on remove resource.
+
+0.0.1 beta
+==============
+- Initial release.

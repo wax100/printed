@@ -1,0 +1,30 @@
+/* для GRID */
+.greencur, .new{
+    background: #658F1A;
+}
+
+   .whitespace div{
+      white-space: normal;
+   }
+
+.greencur.greytext{
+    color: #658F1A;
+    }
+
+
+.redcur{
+     background: #FF3C3C
+}
+
+.special{
+     background: #FFDCCB
+}
+
+.x-grid3-row-selected .greencur, .x-grid3-row-selected .redcur, .x-grid3-row-selected .special, .x-grid3-row-selected .new
+{
+background-color: #FEF8DC;
+}
+
+.clear {clear: both;}
+
+.x-combo-list-inner :odd {background-color: #FEF8DC;}

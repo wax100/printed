@@ -1,0 +1,16 @@
+<?php return array (
+  'unique_key' => 'key',
+  'preserve_keys' => true,
+  'update_object' => false,
+  'namespace' => 'typomce',
+  'resolve' => NULL,
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => 'e744d850800d6f5eb06e9edb27ba85de',
+  'package' => 'modx',
+  'class' => 'modSystemSetting',
+  'signature' => 'c104378d4e2bc37d479ed45092f92c9f',
+  'native_key' => 'typo.forced_root_block',
+  'object' => '{"key":"typo.forced_root_block","value":"p","xtype":"textfield","namespace":"typomce","area":"cleanup-output","editedon":null}',
+);

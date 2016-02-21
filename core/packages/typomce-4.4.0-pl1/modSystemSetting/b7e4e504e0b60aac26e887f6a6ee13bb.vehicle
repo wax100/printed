@@ -1,0 +1,16 @@
+<?php return array (
+  'unique_key' => 'key',
+  'preserve_keys' => true,
+  'update_object' => false,
+  'namespace' => 'typomce',
+  'resolve' => NULL,
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => '3f2d0227c73a1522e5646ad9662872d8',
+  'package' => 'modx',
+  'class' => 'modSystemSetting',
+  'signature' => 'b7e4e504e0b60aac26e887f6a6ee13bb',
+  'native_key' => 'typo.custom_buttons2',
+  'object' => '{"key":"typo.custom_buttons2","value":"bold,italic,underline,strikethrough,sub,sup,separator,bullist,numlist,outdent,indent,separator,justifyleft,justifycenter,justifyright,justifyfull,separator,styleselect,formatselect,separator,styleprops","xtype":"textfield","namespace":"typomce","area":"custom-buttons","editedon":null}',
+);
